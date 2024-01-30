@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Comfortaa';
+    src: url('./fonts/Comfortaa-Light.woff2') format('woff2'),
+      url('./fonts/Comfortaa-Light.woff') format('woff');
+    font-display: swap;
+    font-style: normal;
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: 'Comfortaa';
+    src: url('./fonts/Comfortaa-Regular.woff2') format('woff2'),
+      url('./fonts/Comfortaa-Regular.woff') format('woff');
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Comfortaa';
+    src: url('./fonts/Comfortaa-Bold.woff2') format('woff2'),
+      url('./fonts/Comfortaa-Bold.woff') format('woff');
+    font-display: swap;
+    font-style: normal;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-6 mx-auto max-w-7xl;
+  }
+}
