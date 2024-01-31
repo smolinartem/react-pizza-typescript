@@ -6,6 +6,13 @@ export default {
       fontFamily: {
         body: ['Comfortaa', 'ui-sans-serif'],
       },
+      colors: {
+        accent: '#0080FF',
+      },
+      backgroundImage: {
+        burger: "url('./src/assets/button-menu.svg')",
+        close: "url('./src/assets/button-close.svg')",
+      },
     },
   },
   plugins: [],

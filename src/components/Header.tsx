@@ -1,12 +1,15 @@
 import { Link, NavLink } from 'react-router-dom'
-const addActiveClass = (isActive: boolean): string => {
-  return isActive ? 'text-red-500' : ''
-}
+import { NAVIGATION_LINKS } from '../utils/constants'
+import { useState } from 'react'
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
   return (
-    <header className='py-6'>
-      <div className='container flex justify-between items-center'>
-        <Link to='/' className='block w-10 h-10'>
+    <header className='mb-6'>
+      <div className='container flex justify-between items-center py-6 rounded-b-2xl shadow-md'>
+        <Link
+          to='/'
+          className='block w-10 h-10 transition-transform duration-500 hover:translate-x-2 '
+        >
           <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 64 64'>
             <path fill='#f6da77' d='M62.3 47.1C62.2 22.7 41.5 2.1 17.1 2L2.3 62l60-14.9' />
             <path
@@ -33,30 +36,52 @@ export default function Header() {
           </svg>
         </Link>
         <nav className='hidden md:flex gap-x-8 items-center text-xl font-bold'>
-          <NavLink className={({ isActive }) => addActiveClass(isActive)} to='/'>
-            Пиццы
-          </NavLink>
-          <NavLink className={({ isActive }) => addActiveClass(isActive)} to='drinks'>
-            Напитки
-          </NavLink>
-          <NavLink className={({ isActive }) => addActiveClass(isActive)} to='promos'>
-            Акции
-          </NavLink>
-          <NavLink className={({ isActive }) => addActiveClass(isActive)} to='contacts'>
-            Контакты
-          </NavLink>
+          {NAVIGATION_LINKS.map((link) => (
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'text-accent hover:opacity-80' : 'hover:opacity-80'
+              }
+              key={link.name}
+              to={link.path}
+            >
+              {link.name}
+            </NavLink>
+          ))}
         </nav>
-        <Link
-          className='flex items-center gap-2 rounded-lg py-2 px-4 text-white bg-slate-700'
-          to='cart'
+        <div className='flex items-center gap-6'>
+          <Link className='flex items-center gap-2 button' to='cart'>
+            <span>8</span>
+            <svg className='fill-white' xmlns='http://www.w3.org/2000/svg' width='24' height='24'>
+              <path d='M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z' />
+              <circle cx='10.5' cy='19.5' r='1.5' />
+              <circle cx='17.5' cy='19.5' r='1.5' />
+            </svg>
+          </Link>
+          <button
+            className='w-8 h-8 bg-burger bg-with-image md:hidden'
+            onClick={() => setMenuOpen(true)}
+          />
+        </div>
+        <div
+          className={`${
+            menuOpen ? 'w-2/4 pt-6 pr-6' : 'w-0 p-0'
+          } fixed inset-y-0 right-0 z-50  overflow-y-auto flex flex-col items-end bg-white transition-all duration-300`}
         >
-          <span>8</span>
-          <svg className='fill-white' xmlns='http://www.w3.org/2000/svg' width='24' height='24'>
-            <path d='M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z' />
-            <circle cx='10.5' cy='19.5' r='1.5' />
-            <circle cx='17.5' cy='19.5' r='1.5' />
-          </svg>
-        </Link>
+          <button className='w-8 h-8 bg-close bg-with-image' onClick={() => setMenuOpen(false)} />
+          <nav className='py-8 px-10 flex flex-col gap-y-6 w-full text-xl font-bold'>
+            {NAVIGATION_LINKS.map((link) => (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? 'text-accent hover:opacity-80' : 'hover:opacity-80'
+                }
+                key={link.name}
+                to={link.path}
+              >
+                {link.name}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   )
