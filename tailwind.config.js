@@ -12,6 +12,10 @@ export default {
       backgroundImage: {
         burger: "url('./src/assets/button-menu.svg')",
         close: "url('./src/assets/button-close.svg')",
+        cart: "url('./src/assets/cart.svg')",
+      },
+      backgroundSize: {
+        32: '32px 32px',
       },
     },
   },
