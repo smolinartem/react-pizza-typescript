@@ -17,7 +17,10 @@ export default {
       backgroundSize: {
         32: '32px 32px',
       },
+      boxShadow: {
+        container: '0px 2px 10px 1px rgba(34, 60, 80, 0.2)',
+      },
     },
   },
-  plugins: [],
+  plugins: ["require('@tailwindcss/aspect-ratio')"],
 }

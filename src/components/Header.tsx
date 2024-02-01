@@ -9,8 +9,8 @@ export default function Header() {
 
   return (
     <>
-      <header className='fixed w-full inset-0 z-50 h-24'>
-        <div className='container flex justify-between items-center h-full rounded-b-2xl shadow-md'>
+      <header className='fixed w-full inset-0 z-50 h-16 md:h-24'>
+        <div className='container flex justify-between items-center h-full rounded-b-2xl shadow-md bg-white'>
           <Link
             to='/'
             className='block w-10 h-10 transition-transform duration-500 hover:translate-x-2 '
@@ -75,7 +75,7 @@ export default function Header() {
       <div
         className={`${
           menuOpen ? 'w-full sm:w-2/4' : 'w-0'
-        } fixed top-24 bottom-0 right-0 z-20 bg-white overflow-y-auto flex flex-col items-end border-l transition-all duration-300 md:hidden`}
+        } fixed top-16 bottom-0 right-0 z-20 bg-white overflow-y-auto flex flex-col items-end border-l transition-all duration-300 md:hidden`}
       >
         <nav className='py-8 px-10 flex flex-col gap-y-6 w-full text-xl font-bold'>
           {NAVIGATION_LINKS.map((link) => (
