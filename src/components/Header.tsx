@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useMenuClose } from '../hooks/useMenuClose'
 
 import { NAVIGATION_LINKS } from '../utils/constants'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen(!menuOpen)
+  const handleClose = () => setMenuOpen(false)
+  useMenuClose(menuOpen, handleClose)
 
   return (
     <>
-      <header className='fixed w-full inset-0 z-50 h-16 md:h-24'>
+      <header className='fixed w-full inset-0 z-40 h-16 md:h-24'>
         <div className='container flex justify-between items-center h-full rounded-b-2xl shadow-md bg-white'>
           <Link
             to='/'
@@ -55,7 +58,7 @@ export default function Header() {
           </nav>
           <div className='flex items-center gap-6'>
             <Link
-              className='block relative w-12 h-12 rounded-full bg-cart bg-no-repeat bg-center bg-32'
+              className='block relative w-12 h-12 rounded-full bg-cart bg-no-repeat bg-center bg-32 hover:bg-sky-100'
               to='cart'
             >
               <span className='absolute w-4 h-4 right-1 top-2 rounded-full bg-accent text-white flex items-center justify-center text-xs leading-none font-semibold'>
@@ -74,12 +77,13 @@ export default function Header() {
 
       <div
         className={`${
-          menuOpen ? 'w-full sm:w-2/4' : 'w-0'
-        } fixed top-16 bottom-0 right-0 z-20 bg-white overflow-y-auto flex flex-col items-end border-l transition-all duration-300 md:hidden`}
+          menuOpen ? 'w-full sm:w-2/4 opened' : 'w-0'
+        } fixed top-16 bottom-0 right-0 z-30 bg-white overflow-y-auto flex flex-col items-end border-l transition-all duration-300 md:hidden`}
       >
         <nav className='py-8 px-10 flex flex-col gap-y-6 w-full text-xl font-bold'>
           {NAVIGATION_LINKS.map((link) => (
             <NavLink
+              onClick={handleClose}
               className={({ isActive }) =>
                 isActive ? 'text-accent hover:opacity-80' : 'hover:opacity-80'
               }

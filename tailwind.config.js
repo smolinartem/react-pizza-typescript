@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         accent: '#0080FF',
+        popup: 'rgba(0, 0, 0, 0.5)',
       },
       backgroundImage: {
         burger: "url('./src/assets/button-menu.svg')",

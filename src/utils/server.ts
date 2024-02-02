@@ -1,3 +1,5 @@
+import { IPizza } from '../types/pizza.types'
+
 import pizza1 from '../assets/pizzas/pizza-1.jpeg'
 import pizza2 from '../assets/pizzas/pizza-2.jpeg'
 import pizza3 from '../assets/pizzas/pizza-3.jpeg'
@@ -8,7 +10,7 @@ import pizza7 from '../assets/pizzas/pizza-7.jpeg'
 import pizza8 from '../assets/pizzas/pizza-8.jpeg'
 import pizza9 from '../assets/pizzas/pizza-9.jpeg'
 
-export const PIZZAS = [
+export const PIZZAS: IPizza[] = [
   {
     _id: 1,
     name: 'Пицца 4 сыра',
@@ -71,3 +73,57 @@ export const PIZZAS = [
     image: pizza9,
   },
 ]
+
+/* interface IOptions {
+  size: {
+    [key: string]: number
+  }
+  thickness: {
+    [key: string]: number
+  }
+  toppings: {
+    [key: string]: number
+  }
+} */
+
+interface IOptions {
+  [key: string]: {
+    [key: string]: number
+  }
+}
+
+export const PRICE: IOptions = {
+  size: {
+    small: 400,
+    medium: 500,
+    large: 600,
+  },
+  thickness: {
+    thin: 0,
+    lush: 50,
+  },
+  toppings: {
+    cheese: 80,
+    jalapeno: 50,
+    mushrooms: 95,
+    ham: 100,
+  },
+}
+
+export const WEIGHT: IOptions = {
+  size: {
+    small: 370,
+    medium: 520,
+    large: 620,
+  },
+  thickness: {
+    thin: 0,
+    lush: 80,
+  },
+  toppings: {
+    cheese: 100,
+    jalapeno: 30,
+    mushrooms: 30,
+    ham: 50,
+  },
+}

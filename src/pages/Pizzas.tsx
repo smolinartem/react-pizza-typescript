@@ -1,10 +1,34 @@
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { resetOptions } from '../store/option/optionSlice'
 import { PIZZAS } from '../utils/server'
-export default function Pizzas() {
+
+import { IPizza } from '../types/pizza.types'
+import PopupSelectionMenu from '../components/PopupSelectionMenu'
+
+const Pizzas = (): React.JSX.Element => {
+  const dispatch = useDispatch()
+  const [selectedPizza, setSelectedPizza] = useState<IPizza>()
+  const [popupOpen, setPopupOpen] = useState<boolean>(false)
+
+  const handlePopupOpen = (pizza: IPizza) => {
+    dispatch(resetOptions())
+    setSelectedPizza(pizza)
+    setPopupOpen(true)
+  }
+  const handlePopupClose = () => {
+    setPopupOpen(false)
+  }
+
   return (
     <div className='container pt-6 pb-6 mx-auto shadow-container rounded-xl'>
       <div className='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
         {PIZZAS.map((pizza) => (
-          <div key={pizza._id} className='group flex flex-col cursor-pointer'>
+          <div
+            onClick={() => handlePopupOpen(pizza)}
+            key={pizza._id}
+            className='group flex flex-col cursor-pointer'
+          >
             <div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80'>
               <img
                 src={pizza.image}
@@ -21,6 +45,15 @@ export default function Pizzas() {
           </div>
         ))}
       </div>
+      {selectedPizza && (
+        <PopupSelectionMenu
+          selectedPizza={selectedPizza}
+          popupOpen={popupOpen}
+          onPopupClose={handlePopupClose}
+        />
+      )}
     </div>
   )
 }
+
+export default Pizzas

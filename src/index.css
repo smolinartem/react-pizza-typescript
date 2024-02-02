@@ -41,4 +41,7 @@
   .bg-with-image {
     @apply bg-no-repeat bg-center bg-cover;
   }
+  .form-label {
+    @apply block select-none cursor-pointer p-3 w-full has-[:checked]:bg-blue-100 rounded-md border;
+  }
 }
