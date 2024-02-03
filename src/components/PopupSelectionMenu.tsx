@@ -8,11 +8,7 @@ interface Props {
   onPopupClose: () => void
 }
 
-const PopupSelectionMenu = ({
-  selectedPizza,
-  popupOpen,
-  onPopupClose,
-}: Props): React.JSX.Element => {
+const PopupSelectionMenu = ({ selectedPizza, popupOpen, onPopupClose }: Props) => {
   useMenuClose(popupOpen, onPopupClose)
 
   return (
@@ -37,7 +33,7 @@ const PopupSelectionMenu = ({
             </div>
             <span className='mt-3 text-sm text-gray-700'>{selectedPizza?.description}</span>
           </div>
-          <PizzaForm onPopupClose={onPopupClose} />
+          <PizzaForm selectedPizza={selectedPizza} onPopupClose={onPopupClose} />
         </div>
       </div>
     </section>

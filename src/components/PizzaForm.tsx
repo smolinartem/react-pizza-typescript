@@ -1,40 +1,48 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { changeSize, changeThickness, updateToppings } from '../store/option/optionSlice'
+import { addOrder } from '../store/order/orderSlice'
 import type { RootState } from '../store/store'
 
-import { WEIGHT, PRICE } from '../utils/server'
+import { calculateWeight, calculatePrice } from '../utils/calculations'
+import { PRICE } from '../utils/server'
+import { IPizza } from '../types/pizza.types'
 
 interface Props {
+  selectedPizza: IPizza
   onPopupClose: () => void
 }
 
-const PizzaForm = ({ onPopupClose }: Props) => {
+const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
   const dispatch = useDispatch()
   const option = useSelector((state: RootState) => state.option)
 
-  const calculateWeight = (): number => {
-    const { size, thickness, toppings } = option
-
-    const sizeWeight: number = WEIGHT.size[size]
-    const thicknessWeight: number = WEIGHT.thickness[thickness]
-    const toppingsWeight: number = toppings.reduce((a, b) => a + WEIGHT.toppings[b], 0)
-
-    return sizeWeight + thicknessWeight + toppingsWeight
-  }
-  const calculatePrice = (): number => {
-    const { size, thickness, toppings } = option
-
-    const sizePrice: number = PRICE.size[size]
-    const thicknessPrice: number = PRICE.thickness[thickness]
-    const toppingsPrice: number = toppings.reduce((a, b) => a + PRICE.toppings[b], 0)
-
-    return sizePrice + thicknessPrice + toppingsPrice
-  }
-  const weight = calculateWeight()
-  const totalPrice = calculatePrice()
+  const weight = calculateWeight({
+    size: option.size,
+    thickness: option.thickness,
+    toppings: option.toppings,
+  })
+  const price = calculatePrice({
+    size: option.size,
+    thickness: option.thickness,
+    toppings: option.toppings,
+  })
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
+
+    const newOrder = {
+      name: selectedPizza.name,
+      image: selectedPizza.image,
+      description: selectedPizza.description,
+      size: option.size,
+      thickness: option.thickness,
+      toppings: option.toppings,
+      price: price,
+    }
+
+    dispatch(addOrder(newOrder))
+    console.log(newOrder)
+
     onPopupClose()
   }
 
@@ -42,7 +50,7 @@ const PizzaForm = ({ onPopupClose }: Props) => {
     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
       <span className='text-sm'>Вес: {weight} г</span>
       <div className='flex gap-3'>
-        <label className='form-label'>
+        <label className='form-label text-center'>
           <input
             onChange={(e) => dispatch(changeSize(e.target.value))}
             className='appearance-none hidden m-0'
@@ -53,7 +61,7 @@ const PizzaForm = ({ onPopupClose }: Props) => {
           />
           20
         </label>
-        <label className='form-label'>
+        <label className='form-label text-center'>
           <input
             onChange={(e) => dispatch(changeSize(e.target.value))}
             className='appearance-none hidden m-0'
@@ -64,7 +72,7 @@ const PizzaForm = ({ onPopupClose }: Props) => {
           />
           25
         </label>
-        <label className='form-label'>
+        <label className='form-label text-center'>
           <input
             onChange={(e) => dispatch(changeSize(e.target.value))}
             className='appearance-none hidden m-0'
@@ -78,7 +86,7 @@ const PizzaForm = ({ onPopupClose }: Props) => {
       </div>
 
       <div className='flex gap-3'>
-        <label className='form-label'>
+        <label className='form-label text-center'>
           <input
             onChange={(e) => dispatch(changeThickness(e.target.value))}
             className='appearance-none hidden m-0'
@@ -89,7 +97,7 @@ const PizzaForm = ({ onPopupClose }: Props) => {
           />
           Тонкое
         </label>
-        <label className='form-label'>
+        <label className='form-label text-center'>
           <input
             onChange={(e) => dispatch(changeThickness(e.target.value))}
             className='appearance-none hidden m-0'
@@ -158,7 +166,7 @@ const PizzaForm = ({ onPopupClose }: Props) => {
       </div>
 
       <button className='p-4 border rounded-md bg-accent text-white hover:opacity-80' type='submit'>
-        Добавить в корзину {totalPrice}р
+        Добавить в корзину {price}р
       </button>
     </form>
   )

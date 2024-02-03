@@ -14,6 +14,8 @@ export default {
         burger: "url('./src/assets/button-menu.svg')",
         close: "url('./src/assets/button-close.svg')",
         cart: "url('./src/assets/cart.svg')",
+        arrow: "url('./src/assets/button-left.svg')",
+        trash: "url('./src/assets/button-trash.svg')",
       },
       backgroundSize: {
         32: '32px 32px',

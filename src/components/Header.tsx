@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useMenuClose } from '../hooks/useMenuClose'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store/store'
 
 import { NAVIGATION_LINKS } from '../utils/constants'
 
 export default function Header() {
+  const order = useSelector((state: RootState) => state.order)
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const handleClose = () => setMenuOpen(false)
@@ -61,9 +64,11 @@ export default function Header() {
               className='block relative w-12 h-12 rounded-full bg-cart bg-no-repeat bg-center bg-32 hover:bg-sky-100'
               to='cart'
             >
-              <span className='absolute w-4 h-4 right-1 top-2 rounded-full bg-accent text-white flex items-center justify-center text-xs leading-none font-semibold'>
-                18
-              </span>
+              {order.length === 0 ? null : (
+                <span className='absolute w-4 h-4 right-1 top-2 rounded-full bg-accent text-white flex items-center justify-center text-xs leading-none font-semibold'>
+                  {order.length}
+                </span>
+              )}
             </Link>
             <button
               onClick={toggleMenu}
