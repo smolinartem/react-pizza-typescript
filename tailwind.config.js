@@ -1,3 +1,4 @@
+import aspectRatioPlugin from '@tailwindcss/aspect-ratio'
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -16,6 +17,8 @@ export default {
         cart: "url('./src/assets/cart.svg')",
         arrow: "url('./src/assets/button-left.svg')",
         trash: "url('./src/assets/button-trash.svg')",
+        plus: "url('./src/assets/button-plus.svg')",
+        minus: "url('./src/assets/button-minus.svg')",
       },
       backgroundSize: {
         32: '32px 32px',
@@ -25,5 +28,5 @@ export default {
       },
     },
   },
-  plugins: ["require('@tailwindcss/aspect-ratio')"],
+  plugins: [aspectRatioPlugin],
 }

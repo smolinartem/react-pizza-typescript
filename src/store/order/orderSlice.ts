@@ -8,6 +8,7 @@ interface IOrder {
   thickness: string
   toppings: string[] | []
   price: number
+  amount: number
 }
 
 const initialState: IOrder[] = []
@@ -26,8 +27,17 @@ const orderSlice = createSlice({
     clearOrder: (state) => {
       state.length = 0
     },
+    increaseAmount: (state, action: PayloadAction<number>) => {
+      const index = action.payload
+      state[index].amount++
+    },
+    decreaseAmount: (state, action: PayloadAction<number>) => {
+      const index = action.payload
+      state[index].amount--
+    },
   },
 })
 
-export const { addOrder, deleteItem, clearOrder } = orderSlice.actions
+export const { addOrder, deleteItem, clearOrder, increaseAmount, decreaseAmount } =
+  orderSlice.actions
 export default orderSlice.reducer

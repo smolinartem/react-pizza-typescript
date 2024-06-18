@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export interface IOptions {
   size: string
@@ -23,7 +22,7 @@ export const optionSlice = createSlice({
     changeThickness: (state, action: PayloadAction<string>) => {
       state.thickness = action.payload
     },
-    updateToppings: (state, action) => {
+    updateToppings: (state, action: PayloadAction<{ checked: boolean; value: string }>) => {
       const checked = action.payload.checked
       const value = action.payload.value
       if (checked) {

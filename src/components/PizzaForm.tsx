@@ -38,10 +38,9 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
       thickness: option.thickness,
       toppings: option.toppings,
       price: price,
+      amount: 1,
     }
-
     dispatch(addOrder(newOrder))
-    console.log(newOrder)
 
     onPopupClose()
   }
@@ -49,7 +48,7 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
       <span className='text-sm'>Вес: {weight} г</span>
-      <div className='flex gap-3'>
+      <div className='flex gap-2 sm:gap-3'>
         <label className='form-label text-center'>
           <input
             onChange={(e) => dispatch(changeSize(e.target.value))}
@@ -85,7 +84,7 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
         </label>
       </div>
 
-      <div className='flex gap-3'>
+      <div className='flex gap-2 sm:gap-3'>
         <label className='form-label text-center'>
           <input
             onChange={(e) => dispatch(changeThickness(e.target.value))}
@@ -110,7 +109,7 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
         </label>
       </div>
 
-      <div className='flex flex-col gap-3 grow'>
+      <div className='flex flex-col gap-2 sm:gap-3 grow'>
         <label className='form-label'>
           <input
             onChange={(e) =>
@@ -122,7 +121,7 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
             value='cheese'
             checked={option.toppings.includes('cheese')}
           />
-          Сыр Моцарелла: {PRICE.toppings.cheese}р
+          Сыр Моцарелла: {PRICE.toppings.cheese} &#8381;
         </label>
         <label className='form-label'>
           <input
@@ -135,7 +134,7 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
             value='jalapeno'
             checked={option.toppings.includes('jalapeno')}
           />
-          Халапеньо: {PRICE.toppings.jalapeno}р
+          Халапеньо: {PRICE.toppings.jalapeno} &#8381;
         </label>
         <label className='form-label'>
           <input
@@ -148,7 +147,7 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
             value='mushrooms'
             checked={option.toppings.includes('mushrooms')}
           />
-          Шампиньоны: {PRICE.toppings.mushrooms}р
+          Шампиньоны: {PRICE.toppings.mushrooms} &#8381;
         </label>
         <label className='form-label'>
           <input
@@ -161,12 +160,12 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
             value='ham'
             checked={option.toppings.includes('ham')}
           />
-          Ветчина: {PRICE.toppings.ham}р
+          Ветчина: {PRICE.toppings.ham} &#8381;
         </label>
       </div>
 
       <button className='p-4 border rounded-md bg-accent text-white hover:opacity-80' type='submit'>
-        Добавить в корзину {price}р
+        Добавить в корзину {price} &#8381;
       </button>
     </form>
   )

@@ -74,18 +74,6 @@ export const PIZZAS: IPizza[] = [
   },
 ]
 
-/* interface IOptions {
-  size: {
-    [key: string]: number
-  }
-  thickness: {
-    [key: string]: number
-  }
-  toppings: {
-    [key: string]: number
-  }
-} */
-
 interface IOptions {
   [key: string]: {
     [key: string]: number

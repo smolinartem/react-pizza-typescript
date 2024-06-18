@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/store'
-import { clearOrder, deleteItem } from '../store/order/orderSlice'
+import { clearOrder, deleteItem, increaseAmount, decreaseAmount } from '../store/order/orderSlice'
 import { RU_NAMES } from '../utils/constants'
 import { translateToppings } from '../utils/translateToppings'
 
@@ -10,7 +10,7 @@ const Cart = () => {
   const order = useSelector((state: RootState) => state.order)
   const dispatch = useDispatch()
   const empty = order.length === 0
-  const totalPrice = order.reduce((acc, item) => acc + item.price, 0)
+  const totalPrice = order.reduce((acc, item) => acc + item.price * item.amount, 0)
 
   return (
     <section>
@@ -39,12 +39,8 @@ const Cart = () => {
           ) : (
             order.map((item, index) => (
               <li className='flex bg-white rounded-lg p-4 shadow-container' key={index}>
-                <div className='aspect-h-1 aspect-w-1 w-24 h-24 rounded-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75'>
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className='h-full w-full object-cover object-center lg:h-full lg:w-full'
-                  />
+                <div className='shrink-0 w-24 h-24 rounded-full overflow-hidden bg-gray-200'>
+                  <img src={item.image} alt={item.name} className='object-cover object-center' />
                 </div>
 
                 <div className='flex items-center ml-4 w-full'>
@@ -58,7 +54,23 @@ const Cart = () => {
                     </span>
                   </div>
 
-                  <span className='w-20 text-center font-semibold text-2xl'>{item.price}р</span>
+                  <div className='w-28 flex items-center justify-between'>
+                    <button
+                      className='w-10 h-10 rounded-full hover:opacity-8 border bg-minus bg-with-image'
+                      disabled={item.amount === 1}
+                      onClick={() => dispatch(decreaseAmount(index))}
+                    />
+
+                    <span className='text-2xl'>{item.amount}</span>
+                    <button
+                      className='w-10 h-10 rounded-full hover:opacity-8 border bg-plus bg-with-image'
+                      onClick={() => dispatch(increaseAmount(index))}
+                    />
+                  </div>
+
+                  <span className='w-20 text-center font-semibold text-2xl'>
+                    {item.price * item.amount}&#8381;
+                  </span>
 
                   <button
                     onClick={() => dispatch(deleteItem(index))}
@@ -71,7 +83,7 @@ const Cart = () => {
         </ul>
         {empty ? null : (
           <div className='py-8 flex items-center justify-between'>
-            <span className='text-xl font-semibold'>Сумма заказа: {totalPrice} р</span>
+            <span className='text-xl font-semibold'>Сумма заказа: {totalPrice}&#8381;</span>
             <button className='button' type='button'>
               Оформить заказ
             </button>
