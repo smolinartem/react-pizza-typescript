@@ -2,16 +2,17 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { resetOptions } from '../store/option/optionSlice'
 import { PIZZAS } from '../utils/server'
-
-import { IPizza } from '../types/pizza.types'
+import type { Pizza } from '../types/index.types'
+// - components
+import PizzaCard from '../components/PizzaCard'
 import PopupSelectionMenu from '../components/PopupSelectionMenu'
 
-const Pizzas = (): React.JSX.Element => {
+export default function Pizzas() {
   const dispatch = useDispatch()
-  const [selectedPizza, setSelectedPizza] = useState<IPizza | null>(null)
-  const [popupOpen, setPopupOpen] = useState<boolean>(false)
+  const [selectedPizza, setSelectedPizza] = useState<Pizza | null>(null)
+  const [popupOpen, setPopupOpen] = useState(false)
 
-  const handlePopupOpen = (pizza: IPizza) => {
+  const handlePopupOpen = (pizza: Pizza) => {
     dispatch(resetOptions())
     setSelectedPizza(pizza)
     setPopupOpen(true)
@@ -22,40 +23,20 @@ const Pizzas = (): React.JSX.Element => {
 
   return (
     <>
-      <div className='container pt-6 pb-6 mx-auto shadow-container rounded-xl h-full'>
-        <div className='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
+      <div className='container wrapper pt-4 pb-4 md:pt-6 md:pb-6 shadow-one rounded-xl h-full'>
+        <ul className='product-grid'>
           {PIZZAS.map((pizza) => (
-            <div
-              onClick={() => handlePopupOpen(pizza)}
-              key={pizza._id}
-              className='group flex flex-col cursor-pointer'
-            >
-              <div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80'>
-                <img
-                  src={pizza.image}
-                  alt={pizza.name}
-                  className='h-full w-full object-cover object-center lg:h-full lg:w-full'
-                />
-              </div>
-              <h3 className='mt-4 text-lg text-gray-700 font-semibold'>{pizza.name}</h3>
-              <p className='mt-2 grow text-sm text-gray-700'>{pizza.description}</p>
-              <div className='mt-4 flex justify-between items-center'>
-                <span className='text-lg font-semibold shrink-0 text-gray-700'>от 400 &#8381;</span>
-                <button className='text-sm shrink-0 button'>Добавить</button>
-              </div>
-            </div>
+            <PizzaCard onOpen={handlePopupOpen} pizza={pizza} key={pizza._id} /> // Карточка пиццы
           ))}
-        </div>
+        </ul>
       </div>
       {selectedPizza && (
         <PopupSelectionMenu
           selectedPizza={selectedPizza}
-          popupOpen={popupOpen}
-          onPopupClose={handlePopupClose}
-        />
+          isOpen={popupOpen}
+          onClose={handlePopupClose}
+        /> // Попап с формой выбора ингредиентов
       )}
     </>
   )
 }
-
-export default Pizzas

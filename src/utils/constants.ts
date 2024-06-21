@@ -1,4 +1,4 @@
-export const NAVIGATION_LINKS = [
+export const NAV_LINKS = [
   {
     name: 'Пиццы',
     path: '/',
@@ -15,11 +15,9 @@ export const NAVIGATION_LINKS = [
     name: 'Контакты',
     path: 'contacts',
   },
-]
+] as const
 
-type Names = {
-  [key: string]: string
-}
+type Names = Record<string, string>
 
 export const RU_NAMES: Names = {
   small: '20см',

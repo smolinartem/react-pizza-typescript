@@ -38,12 +38,13 @@ const Cart = () => {
             <span className='py-10 text-2xl'>Корзина пуста</span>
           ) : (
             order.map((item, index) => (
+              /* Карточка товара */
               <li className='flex bg-white rounded-lg p-4 shadow-container' key={index}>
                 <div className='shrink-0 w-24 h-24 rounded-full overflow-hidden bg-gray-200'>
                   <img src={item.image} alt={item.name} className='object-cover object-center' />
                 </div>
 
-                <div className='flex items-center ml-4 w-full'>
+                <div className='flex flex-col sm:flex-row items-center ml-4 w-full'>
                   <div className='grow'>
                     <h5 className='text-2xl'>{item.name}</h5>
                     <span className='cart__options'>
@@ -54,28 +55,32 @@ const Cart = () => {
                     </span>
                   </div>
 
-                  <div className='w-28 flex items-center justify-between'>
-                    <button
-                      className='w-10 h-10 rounded-full hover:opacity-8 border bg-minus bg-with-image'
-                      disabled={item.amount === 1}
-                      onClick={() => dispatch(decreaseAmount(index))}
-                    />
+                  <div className='flex items-center gap-4'>
+                    {/* Счётчик колличества */}
+                    <div className='w-28 flex items-center justify-between'>
+                      <button
+                        className='w-10 h-10 rounded-full hover:opacity-8 border bg-minus bg-with-image'
+                        disabled={item.amount === 1}
+                        onClick={() => dispatch(decreaseAmount(index))}
+                      />
+                      <span className='text-2xl'>{item.amount}</span>
+                      <button
+                        className='w-10 h-10 rounded-full hover:opacity-8 border bg-plus bg-with-image'
+                        onClick={() => dispatch(increaseAmount(index))}
+                      />
+                    </div>
 
-                    <span className='text-2xl'>{item.amount}</span>
+                    {/* Цена */}
+                    <span className='text-center font-semibold text-xl md:text-2xl'>
+                      {item.price * item.amount}&#8381;
+                    </span>
+
+                    {/* Корзина */}
                     <button
-                      className='w-10 h-10 rounded-full hover:opacity-8 border bg-plus bg-with-image'
-                      onClick={() => dispatch(increaseAmount(index))}
+                      onClick={() => dispatch(deleteItem(index))}
+                      className='bg-trash bg-no-repeat bg-center hover:bg-sky-100 rounded-full w-10 h-10'
                     />
                   </div>
-
-                  <span className='w-20 text-center font-semibold text-2xl'>
-                    {item.price * item.amount}&#8381;
-                  </span>
-
-                  <button
-                    onClick={() => dispatch(deleteItem(index))}
-                    className='bg-trash bg-no-repeat bg-center hover:bg-sky-100 rounded-full w-10 h-10'
-                  />
                 </div>
               </li>
             ))
