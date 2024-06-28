@@ -14,7 +14,7 @@ const Cart = () => {
 
   return (
     <section>
-      <div className='container shadow-container rounded-xl pt-6 mb-10'>
+      <div className='section-container'>
         <div className='pb-6 flex items-center justify-between'>
           <div className='flex gap-4 items-center justify-between'>
             <button

@@ -32,8 +32,8 @@
 }
 
 @layer components {
-  .wrapper {
-    @apply mx-auto px-4 md:px-6 max-w-screen-xl;
+  .section-container {
+    @apply container max-w-screen-xl py-4 md:py-6 shadow-one rounded-xl h-full;
   }
   .button {
     @apply bg-accent rounded-md py-2 px-4 text-white hover:opacity-80;
@@ -45,10 +45,10 @@
     @apply bg-no-repeat bg-center bg-cover;
   }
   .form-label {
-    @apply block select-none cursor-pointer p-3 w-full has-[:checked]:bg-blue-100 rounded-md border;
+    @apply block select-none cursor-pointer p-3 w-full border-2 has-[:checked]:border-accent rounded-md text-neutral-600;
   }
   .product-grid {
-    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-6 sm:gap-x-6;
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-8 sm:gap-x-6;
   }
   .logo-animation {
     @apply transition-transform duration-300 hover:scale-110;
@@ -58,5 +58,8 @@
   }
   .btn-cart-animation {
     @apply transition duration-300 hover:border-accent;
+  }
+  .all-screen {
+    @apply z-50 fixed top-0 left-0 w-full h-full;
   }
 }

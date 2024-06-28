@@ -23,7 +23,7 @@ export default function Pizzas() {
 
   return (
     <>
-      <div className='container wrapper pt-4 pb-4 md:pt-6 md:pb-6 shadow-one rounded-xl h-full'>
+      <div className='section-container'>
         <ul className='product-grid'>
           {PIZZAS.map((pizza) => (
             <PizzaCard onOpen={handlePopupOpen} pizza={pizza} key={pizza._id} /> // Карточка пиццы

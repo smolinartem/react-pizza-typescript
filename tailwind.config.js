@@ -4,12 +4,18 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          md: '1.5rem',
+        },
+      },
       fontFamily: {
         body: ['Comfortaa', 'ui-sans-serif'],
       },
       colors: {
         accent: '#0080FF',
-        popup: 'rgba(0, 0, 0, 0.5)',
       },
       backgroundImage: {
         burger: "url('./src/assets/button-menu.svg')",

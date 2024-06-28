@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <>
       <header className='fixed w-full inset-0 z-40 h-16 md:h-24'>
-        <div className='container wrapper flex justify-between items-center h-full rounded-b-xl shadow-one bg-white'>
+        <div className='container max-w-screen-xl flex justify-between items-center h-full rounded-b-xl shadow-one bg-white'>
           <Logo />
           <Navigation />
           <div className='flex items-center gap-6'>

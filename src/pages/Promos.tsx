@@ -1,3 +1,3 @@
 export default function Promos() {
-  return <div className='container'>Promos</div>
+  return <div className='section-container'>Promos</div>
 }

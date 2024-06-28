@@ -5,14 +5,14 @@ import type { RootState } from '../store/store'
 
 import { calculateWeight, calculatePrice } from '../utils/calculations'
 import { PRICE } from '../utils/server'
-import { IPizza } from '../types/pizza.types'
+import { Pizza } from '../types/index.types'
 
-interface Props {
-  selectedPizza: IPizza
-  onPopupClose: () => void
+type PizzaFormProps = {
+  pizza: Pizza
+  onClose: () => void
 }
 
-const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
+const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
   const dispatch = useDispatch()
   const option = useSelector((state: RootState) => state.option)
 
@@ -31,9 +31,9 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
     e.preventDefault()
 
     const newOrder = {
-      name: selectedPizza.name,
-      image: selectedPizza.image,
-      description: selectedPizza.description,
+      name: pizza.name,
+      image: pizza.image,
+      description: pizza.description,
       size: option.size,
       thickness: option.thickness,
       toppings: option.toppings,
@@ -42,12 +42,12 @@ const PizzaForm = ({ selectedPizza, onPopupClose }: Props) => {
     }
     dispatch(addOrder(newOrder))
 
-    onPopupClose()
+    onClose()
   }
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-      <span className='text-sm'>Вес: {weight} г</span>
+      <span className='text-lg font-bold text-neutral-600'>Вес: {weight} г</span>
       <div className='flex gap-2 sm:gap-3'>
         <label className='form-label text-center'>
           <input
