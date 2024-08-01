@@ -1,23 +1,23 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-interface IOrder {
+export type Order = {
   name: string
   image: string
   description: string
   size: string
   thickness: string
-  toppings: string[] | []
+  toppings: string[]
   price: number
   amount: number
 }
 
-const initialState: IOrder[] = []
+const initialState: Order[] = []
 
 const orderSlice = createSlice({
   name: 'order',
   initialState,
   reducers: {
-    addOrder: (state, action: PayloadAction<IOrder>) => {
+    addOrder: (state, action: PayloadAction<Order>) => {
       state.push(action.payload)
     },
     deleteItem: (state, action: PayloadAction<number>) => {

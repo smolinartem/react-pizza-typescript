@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/store'
 import { clearOrder, deleteItem, increaseAmount, decreaseAmount } from '../store/order/orderSlice'
 import { RU_NAMES } from '../utils/constants'
-import { translateToppings } from '../utils/translateToppings'
+import { translateToppings } from '../utils/helpers'
 
 const Cart = () => {
   const navigate = useNavigate()

@@ -2,10 +2,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeSize, changeThickness, updateToppings } from '../store/option/optionSlice'
 import { addOrder } from '../store/order/orderSlice'
 import type { RootState } from '../store/store'
+import type { Pizza } from '../types/index.types'
 
-import { calculateWeight, calculatePrice } from '../utils/calculations'
-import { PRICE } from '../utils/server'
-import { Pizza } from '../types/index.types'
+import { PRICE, WEIGHT } from '../utils/server'
+
+import { calculatePizza } from '../utils/helpers'
 
 type PizzaFormProps = {
   pizza: Pizza
@@ -16,16 +17,8 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
   const dispatch = useDispatch()
   const option = useSelector((state: RootState) => state.option)
 
-  const weight = calculateWeight({
-    size: option.size,
-    thickness: option.thickness,
-    toppings: option.toppings,
-  })
-  const price = calculatePrice({
-    size: option.size,
-    thickness: option.thickness,
-    toppings: option.toppings,
-  })
+  const weight = calculatePizza(option.size, option.thickness, option.toppings, WEIGHT)
+  const price = calculatePizza(option.size, option.thickness, option.toppings, PRICE)
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()

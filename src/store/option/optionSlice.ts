@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-export interface IOptions {
+export type Options = {
   size: string
   thickness: string
   toppings: string[]
 }
 
-const initialState: IOptions = {
+const initialState: Options = {
   size: 'small',
   thickness: 'thin',
   toppings: [],

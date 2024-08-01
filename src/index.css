@@ -56,8 +56,8 @@
   .nav-animation {
     @apply transition-transform duration-300 hover:translate-y-1;
   }
-  .btn-cart-animation {
-    @apply transition duration-300 hover:border-accent;
+  .circle-animation {
+    @apply transition-all duration-300 rounded-full border-2 border-white hover:border-accent;
   }
   .all-screen {
     @apply z-50 fixed top-0 left-0 w-full h-full;

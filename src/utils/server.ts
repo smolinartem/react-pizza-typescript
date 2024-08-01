@@ -74,31 +74,10 @@ export const PIZZAS: Pizza[] = [
   },
 ]
 
-/* type oneOption = Record<string, number>
-type allOptions = Record<string, oneOption> */
+export type OneOption = Record<string, number>
+export type AllOptions = Record<string, OneOption>
 
-interface SizeInfo {
-  small: number
-  medium: number
-  large: number
-}
-interface ThicknessInfo {
-  thin: number
-  lush: number
-}
-interface ToppingsInfo {
-  cheese: number
-  jalapeno: number
-  mushrooms: number
-  ham: number
-}
-interface PizzaInfo {
-  size: SizeInfo
-  thickness: ThicknessInfo
-  toppings: ToppingsInfo
-}
-
-export const PRICE: PizzaInfo = {
+export const PRICE: AllOptions = {
   size: {
     small: 400,
     medium: 500,
@@ -116,7 +95,7 @@ export const PRICE: PizzaInfo = {
   },
 }
 
-export const WEIGHT: PizzaInfo = {
+export const WEIGHT: AllOptions = {
   size: {
     small: 370,
     medium: 520,

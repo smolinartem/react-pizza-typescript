@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
 
-export default function Logo() {
+type LogoProps = {
+  onClose: () => void
+}
+
+export default function Logo({ onClose }: LogoProps) {
   return (
-    <Link to='/' className='block size-10 logo-animation'>
+    <Link onClick={onClose} to='/' className='block size-10 logo-animation'>
       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 64 64'>
         <path fill='#f6da77' d='M62.3 47.1C62.2 22.7 41.5 2.1 17.1 2L2.3 62l60-14.9' />
         <path

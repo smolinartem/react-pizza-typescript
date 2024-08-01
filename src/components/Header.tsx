@@ -18,11 +18,11 @@ export default function Header() {
     <>
       <header className='fixed w-full inset-0 z-40 h-16 md:h-24'>
         <div className='container max-w-screen-xl flex justify-between items-center h-full rounded-b-xl shadow-one bg-white'>
-          <Logo />
+          <Logo onClose={handleClose} />
           <Navigation />
           <div className='flex items-center gap-6'>
             <ButtonCart onClose={handleClose} />
-            <ButtonBurger onClick={toggleMenu} isOpen={menuOpen} />
+            <ButtonBurger onToggle={toggleMenu} isOpen={menuOpen} />
           </div>
         </div>
       </header>

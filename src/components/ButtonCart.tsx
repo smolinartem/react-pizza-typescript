@@ -12,7 +12,7 @@ export default function ButtonCart({ onClose }: ButtonCartProps) {
   return (
     <Link
       onClick={onClose}
-      className='block relative size-10 md:size-12 rounded-full bg-cart bg-with-image border-2 btn-cart-animation'
+      className='block relative size-10 md:size-12 bg-cart bg-with-image circle-animation'
       to='cart'
     >
       {order.length === 0 ? null : (
