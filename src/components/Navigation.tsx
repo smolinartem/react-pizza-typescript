@@ -6,9 +6,7 @@ export default function Navigation() {
     <nav className='hidden md:flex md:gap-x-8 md:items-center md:text-xl md:font-bold'>
       {NAV_LINKS.map((link) => (
         <NavLink
-          className={({ isActive }) =>
-            isActive ? 'text-accent nav-animation ' : 'nav-animation text-neutral-600'
-          }
+          className={({ isActive }) => (isActive ? 'text-accent' : 'text-stone-800')}
           key={link.name}
           to={link.path}
         >

@@ -17,8 +17,8 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
   const dispatch = useDispatch()
   const option = useSelector((state: RootState) => state.option)
 
-  const weight = calculatePizza(option.size, option.thickness, option.toppings, WEIGHT)
-  const price = calculatePizza(option.size, option.thickness, option.toppings, PRICE)
+  const weight = calculatePizza(option, WEIGHT)
+  const price = calculatePizza(option, PRICE)
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -40,7 +40,7 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-      <span className='text-lg font-bold text-neutral-600'>Вес: {weight} г</span>
+      <span className='text-lg font-bold'>Вес: {weight} г</span>
       <div className='flex gap-2 sm:gap-3'>
         <label className='form-label text-center'>
           <input

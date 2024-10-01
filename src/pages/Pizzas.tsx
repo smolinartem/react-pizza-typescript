@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { resetOptions } from '../store/option/optionSlice'
-import { PIZZAS } from '../utils/server'
+import { pizzaList, pizzaCategories } from '../utils/server'
+import { usePizzaCategory } from '../hooks/usePizzaCategory'
 import type { Pizza } from '../types/index.types'
 // - components
 import PizzaCard from '../components/PizzaCard'
 import PopupSelectionMenu from '../components/PopupSelectionMenu'
+import Filters from '../components/Filters'
 
 export default function Pizzas() {
+  const { shownPizzaCards, selectCategory } = usePizzaCategory(pizzaList)
+
   const dispatch = useDispatch()
   const [selectedPizza, setSelectedPizza] = useState<Pizza | null>(null)
   const [popupOpen, setPopupOpen] = useState(false)
@@ -24,8 +28,14 @@ export default function Pizzas() {
   return (
     <>
       <div className='section-container'>
+        <Filters
+          items={pizzaCategories}
+          categoryName='pizza categories'
+          onSelect={selectCategory}
+        />
+
         <ul className='product-grid'>
-          {PIZZAS.map((pizza) => (
+          {shownPizzaCards.map((pizza) => (
             <PizzaCard onOpen={handlePopupOpen} pizza={pizza} key={pizza._id} /> // Карточка пиццы
           ))}
         </ul>

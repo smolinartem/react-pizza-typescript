@@ -15,7 +15,8 @@ export default {
         body: ['Comfortaa', 'ui-sans-serif'],
       },
       colors: {
-        accent: '#0080FF',
+        /* accent: '#0080FF', */
+        accent: '#D92121',
       },
       backgroundImage: {
         burger: "url('./src/assets/button-menu.svg')",

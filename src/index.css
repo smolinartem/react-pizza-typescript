@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --grey-color: #525252;
+}
+
 @layer base {
   @font-face {
     font-family: 'Comfortaa';
@@ -45,16 +49,13 @@
     @apply bg-no-repeat bg-center bg-cover;
   }
   .form-label {
-    @apply block select-none cursor-pointer p-3 w-full border-2 has-[:checked]:border-accent rounded-md text-neutral-600;
+    @apply block select-none cursor-pointer p-3 w-full border-2 has-[:checked]:border-accent rounded-md;
   }
   .product-grid {
     @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-8 sm:gap-x-6;
   }
   .logo-animation {
     @apply transition-transform duration-300 hover:scale-110;
-  }
-  .nav-animation {
-    @apply transition-transform duration-300 hover:translate-y-1;
   }
   .circle-animation {
     @apply transition-all duration-300 rounded-full border-2 border-white hover:border-accent;

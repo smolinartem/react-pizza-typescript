@@ -19,7 +19,7 @@ export default function SideBarMenu({ isOpen, onClose }: SideBarProps) {
         {NAV_LINKS.map((link) => (
           <NavLink
             onClick={onClose}
-            className={({ isActive }) => (isActive ? 'text-accent nav-animation' : 'nav-animation')}
+            className={({ isActive }) => (isActive ? 'text-accent' : 'text-neutral-600')}
             key={link.name}
             to={link.path}
           >

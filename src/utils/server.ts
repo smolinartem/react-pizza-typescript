@@ -1,83 +1,172 @@
 import type { Pizza } from '../types/index.types'
 
-import pizza1 from '../assets/pizzas/pizza-1.jpeg'
-import pizza2 from '../assets/pizzas/pizza-2.jpeg'
-import pizza3 from '../assets/pizzas/pizza-3.jpeg'
-import pizza4 from '../assets/pizzas/pizza-4.jpeg'
-import pizza5 from '../assets/pizzas/pizza-5.jpeg'
-import pizza6 from '../assets/pizzas/pizza-6.jpeg'
-import pizza7 from '../assets/pizzas/pizza-7.jpeg'
-import pizza8 from '../assets/pizzas/pizza-8.jpeg'
-import pizza9 from '../assets/pizzas/pizza-9.jpeg'
+export const pizzaCategories = [
+  { id: 1, value: 'all', label: 'Все' },
+  { id: 2, value: 'hot', label: 'Острые' },
+  { id: 3, value: 'kids', label: 'Детям' },
+  { id: 4, value: 'veg', label: 'Без мяса' },
+]
 
-export const PIZZAS: Pizza[] = [
+export const pizzaList: Pizza[] = [
   {
     _id: 1,
-    name: 'Пицца 4 сыра',
-    description: 'Моцарелла, сыр блю чиз с голубой плесенью, фета, пармезан, соус ранч, тесто',
-    image: pizza1,
+    name: 'Пицца Бекон и чоризо',
+    description:
+      'Бекон, колбаски чоризо, моцарелла, фирменный томатный соус, базилик, орегано, тесто',
+    image: '/assets/products/pizza/p1.webp',
+    category: ['hot'],
   },
   {
     _id: 2,
-    name: 'Пицца Охотничья',
+    name: 'Пицца Мясное барбекю',
     description:
-      'Пепперони, охотничьи колбаски, моцарелла, свежие шампиньоны, свежий укроп, соус ранч, фирменный томатный соус, тесто',
-    image: pizza2,
+      'Охотничьи колбаски, бекон, моцарелла, лук красный, томаты, соус барбекю, фирменный томатный соус, тесто',
+    image: '/assets/products/pizza/p2.webp',
+    category: ['classic'],
   },
   {
     _id: 3,
-    name: 'Пицца Курица и Колбаски',
-    description:
-      'Копченая курица, охотничьи колбаски, моцарелла, маринованные огурцы, томаты, красный лук, свежий укроп, майонезный соус, кетчуп, тесто',
-    image: pizza3,
+    name: 'Пицца Ветчина и Грибы',
+    description: 'Ветчина, свежие шампиньоны, моцарелла, чеснок, соус ранч, тесто',
+    image: '/assets/products/pizza/p3.webp',
+    category: ['classic'],
   },
   {
     _id: 4,
-    name: 'Пицца Запечённая Буженина',
+    name: 'Пицца Чоризо',
     description:
-      'Буженина из свинины, моцарелла, маринованные огурцы, лук фри, лук красный, майонезный соус, томатный соус, тесто',
-    image: pizza4,
+      'Колбаски чоризо, моцарелла, свежие шампиньоны, перец болгарский, фирменный томатный соус, тесто',
+    image: '/assets/products/pizza/p4.webp',
+    category: ['hot'],
   },
   {
     _id: 5,
-    name: 'Пицца Жгучая Барбекю',
+    name: 'Пицца Греческая с курицей',
     description:
-      'Пепперони, моцарелла, красный лук, халапеньо, болгарский перец, фирменный томатный соус, барбекю соус, тесто',
-    image: pizza5,
+      'Курица, моцарелла, фета, томаты, перец болгарский, красный лук, свежие шампиньоны, базилик, орегано, фирменный томатный соус, тесто',
+    image: '/assets/products/pizza/p5.webp',
+    category: ['kids'],
   },
   {
     _id: 6,
-    name: 'Пицца Американа',
+    name: 'Пицца Итальянская',
     description:
-      'Бекон, моцарелла, чеддер, маринованные огурцы, фирменный томатный соус, медово - горчичный соус, тесто',
-    image: pizza6,
+      'Пепперони, два вида сыра моцареллы, шампиньоны, фирменный томатный соус, базилик, орегано, тесто',
+    image: '/assets/products/pizza/p6.webp',
+    category: ['classic'],
   },
   {
     _id: 7,
-    name: 'Пицца Жюльен',
+    name: 'Пицца Курица и Колбаски',
     description:
-      'Бекон, копчёная курица, моцарелла, чеддер, свежие шампиньоны, сливки, укроп, майонезный соус, тесто',
-    image: pizza7,
+      'Копченая курица, охотничьи колбаски, моцарелла, маринованные огурцы, томаты, красный лук, свежий укроп, майонезный соус, кетчуп, тесто',
+    image: '/assets/products/pizza/p7.webp',
+    category: ['classic'],
   },
   {
     _id: 8,
-    name: 'Пицца Копченое барбекю',
-    description:
-      'Копченая курица, пепперони, моцарелла, томаты, перец болгарский, чеснок, укроп, соус барбекю, соус майонезный, тесто',
-    image: pizza8,
+    name: 'Пицца Курочка Блю Чиз',
+    description: 'Много курицы, моцарелла, сыр блю чиз с голубой плесенью, соус ранч, тесто',
+    image: '/assets/products/pizza/p8.webp',
+    category: ['classic'],
   },
   {
     _id: 9,
+    name: 'Пицца Жюльен',
+    description:
+      'Бекон, копчёная курица, моцарелла, чеддер, свежие шампиньоны, сливки, укроп, майонезный соус, тесто',
+    image: '/assets/products/pizza/p9.webp',
+    category: ['classic'],
+  },
+  {
+    _id: 10,
+    name: 'Пицца Ветчина и бекон',
+    description: 'Ветчина, бекон, моцарелла, чеддер, красный лук, соус цезарь, тесто',
+    image: '/assets/products/pizza/p10.webp',
+    category: ['classic'],
+  },
+  {
+    _id: 11,
+    name: 'Пицца Американа',
+    description:
+      'Бекон, моцарелла, чеддер, маринованные огурцы, фирменный томатный соус, медово - горчичный соус, тесто',
+    image: '/assets/products/pizza/p11.webp',
+    category: ['classic'],
+  },
+  {
+    _id: 12,
+    name: 'Пицца 4 сезона',
+    description:
+      'Фирменный томатный соус, моцарелла, пепперони, ветчина, охотничьи колбаски, буженина из свинины, сыр блю чиз, сыр фета, томаты',
+    image: '/assets/products/pizza/p12.webp',
+    category: ['classic'],
+  },
+  {
+    _id: 13,
+    name: 'Пицца Деревенская',
+    description:
+      'Ветчина, копчёная курица, моцарелла, зеленый лук, маринованные огурцы, майонезный соус, фирменный томатный соус, тесто',
+    image: '/assets/products/pizza/p13.webp',
+    category: ['classic'],
+  },
+  {
+    _id: 14,
+    name: 'Пицца Охотничья',
+    description:
+      'Пепперони, охотничьи колбаски, моцарелла, свежие шампиньоны, свежий укроп, соус ранч, фирменный томатный соус, тесто',
+    image: '/assets/products/pizza/p14.webp',
+    category: ['hot'],
+  },
+  {
+    _id: 15,
     name: 'Пицца Пепперони',
     description: 'Много пепперони, много моцареллы, фирменный томатный соус, тесто',
-    image: pizza9,
+    image: '/assets/products/pizza/p15.webp',
+    category: ['hot'],
+  },
+  {
+    _id: 16,
+    name: 'Пицца Жгучая Барбекю',
+    description:
+      'Пепперони, моцарелла, красный лук, халапеньо, болгарский перец, фирменный томатный соус, барбекю соус, тесто',
+    image: '/assets/products/pizza/p16.webp',
+    category: ['hot'],
+  },
+  {
+    _id: 17,
+    name: 'Пицца Карбонара',
+    description:
+      'Много бекона, моцарелла, пармезан, томаты, сливки, свежий укроп, соус ранч, тесто',
+    image: '/assets/products/pizza/p17.webp',
+    category: ['kids'],
+  },
+  {
+    _id: 18,
+    name: 'Пицца 4 сыра',
+    description: 'Моцарелла, сыр блю чиз с голубой плесенью, фета, пармезан, соус ранч, тесто',
+    image: '/assets/products/pizza/p18.webp',
+    category: ['kids', 'veg'],
+  },
+  {
+    _id: 19,
+    name: 'Пицца Сырная',
+    description: 'Два вида моцареллы, фета, соус цезарь, тесто',
+    image: '/assets/products/pizza/p19.webp',
+    category: ['kids', 'veg'],
+  },
+  {
+    _id: 20,
+    name: 'Пицца Маргарита',
+    description: 'Очень много моцареллы, томаты, фирменный томатный соус, орегано, базилик, тесто',
+    image: '/assets/products/pizza/p20.webp',
+    category: ['kids', 'veg'],
   },
 ]
 
 export type OneOption = Record<string, number>
-export type AllOptions = Record<string, OneOption>
+export type Values = Record<string, OneOption>
 
-export const PRICE: AllOptions = {
+export const PRICE: Values = {
   size: {
     small: 400,
     medium: 500,
@@ -95,7 +184,7 @@ export const PRICE: AllOptions = {
   },
 }
 
-export const WEIGHT: AllOptions = {
+export const WEIGHT: Values = {
   size: {
     small: 370,
     medium: 520,
