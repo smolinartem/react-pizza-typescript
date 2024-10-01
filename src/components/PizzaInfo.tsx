@@ -1,7 +1,7 @@
-import { Pizza } from '../types/index.types'
+import { Product } from '../types/index.types'
 
 type PizzaInfoProps = {
-  pizza: Pizza
+  pizza: Product
 }
 
 export default function PizzasInfo({ pizza }: PizzaInfoProps) {
