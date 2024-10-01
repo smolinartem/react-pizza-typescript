@@ -1,14 +1,13 @@
-export type cats = 'classic' | 'hot' | 'kids' | 'veg'
-
-export type Pizza = {
+export type Product = {
   _id: number
   name: string
   description: string
   image: string
-  category: cats[]
+  category: string[]
+  price?: number
 }
 
-export type category = {
+export type Category = {
   id: number
   value: string
   label: string

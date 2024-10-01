@@ -1,22 +1,22 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { resetOptions } from '../store/option/optionSlice'
-import { pizzaList, pizzaCategories } from '../utils/server'
-import { usePizzaCategory } from '../hooks/usePizzaCategory'
-import type { Pizza } from '../types/index.types'
+import { pizzas, pizzasCategories } from '../utils/server'
+import { useProductCategory } from '../hooks/useProductCategory'
+import type { Product } from '../types/index.types'
 // - components
-import PizzaCard from '../components/PizzaCard'
+import ProductCard from '../components/ProductCard'
 import PopupSelectionMenu from '../components/PopupSelectionMenu'
 import Filters from '../components/Filters'
 
 export default function Pizzas() {
-  const { shownPizzaCards, selectCategory } = usePizzaCategory(pizzaList)
+  const { shownProducts, changeCategory, selected } = useProductCategory(pizzas)
 
   const dispatch = useDispatch()
-  const [selectedPizza, setSelectedPizza] = useState<Pizza | null>(null)
+  const [selectedPizza, setSelectedPizza] = useState<Product | null>(null)
   const [popupOpen, setPopupOpen] = useState(false)
 
-  const handlePopupOpen = (pizza: Pizza) => {
+  const handlePopupOpen = (pizza: Product) => {
     dispatch(resetOptions())
     setSelectedPizza(pizza)
     setPopupOpen(true)
@@ -29,14 +29,15 @@ export default function Pizzas() {
     <>
       <div className='section-container'>
         <Filters
-          items={pizzaCategories}
-          categoryName='pizza categories'
-          onSelect={selectCategory}
+          items={pizzasCategories}
+          categoryName='pizzaCategories'
+          onSelect={changeCategory}
+          selected={selected}
         />
 
         <ul className='product-grid'>
-          {shownPizzaCards.map((pizza) => (
-            <PizzaCard onOpen={handlePopupOpen} pizza={pizza} key={pizza._id} /> // Карточка пиццы
+          {shownProducts.map((pizza) => (
+            <ProductCard onCardClick={handlePopupOpen} product={pizza} key={pizza._id} /> // Карточка пиццы
           ))}
         </ul>
       </div>

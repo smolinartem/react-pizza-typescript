@@ -2,14 +2,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeSize, changeThickness, updateToppings } from '../store/option/optionSlice'
 import { addOrder } from '../store/order/orderSlice'
 import type { RootState } from '../store/store'
-import type { Pizza } from '../types/index.types'
+import type { Product } from '../types/index.types'
 
 import { PRICE, WEIGHT } from '../utils/server'
 
 import { calculatePizza } from '../utils/helpers'
 
 type PizzaFormProps = {
-  pizza: Pizza
+  pizza: Product
   onClose: () => void
 }
 

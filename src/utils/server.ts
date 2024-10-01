@@ -1,13 +1,17 @@
-import type { Pizza } from '../types/index.types'
+import type { Product } from '../types/index.types'
 
-export const pizzaCategories = [
-  { id: 1, value: 'all', label: 'Все' },
-  { id: 2, value: 'hot', label: 'Острые' },
-  { id: 3, value: 'kids', label: 'Детям' },
-  { id: 4, value: 'veg', label: 'Без мяса' },
+export const pizzasCategories = [
+  { id: 1, value: 'hot', label: 'Острые' },
+  { id: 2, value: 'kids', label: 'Детям' },
+  { id: 3, value: 'veg', label: 'Без мяса' },
 ]
 
-export const pizzaList: Pizza[] = [
+export const drinksCategories = [
+  { id: 1, value: 'hot', label: 'Горячие' },
+  { id: 2, value: 'cold', label: 'Холодные' },
+]
+
+export const pizzas: Product[] = [
   {
     _id: 1,
     name: 'Пицца Бекон и чоризо',
@@ -22,14 +26,14 @@ export const pizzaList: Pizza[] = [
     description:
       'Охотничьи колбаски, бекон, моцарелла, лук красный, томаты, соус барбекю, фирменный томатный соус, тесто',
     image: '/assets/products/pizza/p2.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 3,
     name: 'Пицца Ветчина и Грибы',
     description: 'Ветчина, свежие шампиньоны, моцарелла, чеснок, соус ранч, тесто',
     image: '/assets/products/pizza/p3.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 4,
@@ -53,7 +57,7 @@ export const pizzaList: Pizza[] = [
     description:
       'Пепперони, два вида сыра моцареллы, шампиньоны, фирменный томатный соус, базилик, орегано, тесто',
     image: '/assets/products/pizza/p6.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 7,
@@ -61,14 +65,14 @@ export const pizzaList: Pizza[] = [
     description:
       'Копченая курица, охотничьи колбаски, моцарелла, маринованные огурцы, томаты, красный лук, свежий укроп, майонезный соус, кетчуп, тесто',
     image: '/assets/products/pizza/p7.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 8,
     name: 'Пицца Курочка Блю Чиз',
     description: 'Много курицы, моцарелла, сыр блю чиз с голубой плесенью, соус ранч, тесто',
     image: '/assets/products/pizza/p8.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 9,
@@ -76,14 +80,14 @@ export const pizzaList: Pizza[] = [
     description:
       'Бекон, копчёная курица, моцарелла, чеддер, свежие шампиньоны, сливки, укроп, майонезный соус, тесто',
     image: '/assets/products/pizza/p9.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 10,
     name: 'Пицца Ветчина и бекон',
     description: 'Ветчина, бекон, моцарелла, чеддер, красный лук, соус цезарь, тесто',
     image: '/assets/products/pizza/p10.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 11,
@@ -91,7 +95,7 @@ export const pizzaList: Pizza[] = [
     description:
       'Бекон, моцарелла, чеддер, маринованные огурцы, фирменный томатный соус, медово - горчичный соус, тесто',
     image: '/assets/products/pizza/p11.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 12,
@@ -99,7 +103,7 @@ export const pizzaList: Pizza[] = [
     description:
       'Фирменный томатный соус, моцарелла, пепперони, ветчина, охотничьи колбаски, буженина из свинины, сыр блю чиз, сыр фета, томаты',
     image: '/assets/products/pizza/p12.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 13,
@@ -107,7 +111,7 @@ export const pizzaList: Pizza[] = [
     description:
       'Ветчина, копчёная курица, моцарелла, зеленый лук, маринованные огурцы, майонезный соус, фирменный томатный соус, тесто',
     image: '/assets/products/pizza/p13.webp',
-    category: ['classic'],
+    category: [],
   },
   {
     _id: 14,
@@ -160,6 +164,137 @@ export const pizzaList: Pizza[] = [
     description: 'Очень много моцареллы, томаты, фирменный томатный соус, орегано, базилик, тесто',
     image: '/assets/products/pizza/p20.webp',
     category: ['kids', 'veg'],
+  },
+]
+
+export const drinks: Product[] = [
+  {
+    _id: 1,
+    name: 'Добрый Апельсин',
+    description: '0,5 л',
+    image: '/assets/products/drink/d1.avif',
+    category: ['cold'],
+    price: 140,
+  },
+  {
+    _id: 2,
+    name: 'Добрый Лимон-Лайм',
+    description: '0,5 л',
+    image: '/assets/products/drink/d2.avif',
+    category: ['cold'],
+    price: 140,
+  },
+  {
+    _id: 3,
+    name: 'Добрый Кола',
+    description: '0,5 л',
+    image: '/assets/products/drink/d3.avif',
+    category: ['cold'],
+    price: 140,
+  },
+  {
+    _id: 4,
+    name: 'Rich Tea Черный с лимоном',
+    description: '0,5 л',
+    image: '/assets/products/drink/d4.avif',
+    category: ['cold'],
+    price: 160,
+  },
+  {
+    _id: 5,
+    name: 'Rich Tea Зеленый',
+    description: '0,5 л',
+    image: '/assets/products/drink/d5.avif',
+    category: ['cold'],
+    price: 160,
+  },
+  {
+    _id: 6,
+    name: 'Rich Tea Зеленый с манго',
+    description: '0,5 л',
+    image: '/assets/products/drink/d6.avif',
+    category: ['cold'],
+    price: 160,
+  },
+  {
+    _id: 7,
+    name: 'Апельсиновый сок Rich',
+    description: '1 л',
+    image: '/assets/products/drink/d7.avif',
+    category: ['cold'],
+    price: 260,
+  },
+  {
+    _id: 8,
+    name: 'Яблочный сок Rich',
+    description: '1 л',
+    image: '/assets/products/drink/d8.avif',
+    category: ['cold'],
+    price: 260,
+  },
+  {
+    _id: 9,
+    name: 'Вишневый нектар Rich',
+    description: '1 л',
+    image: '/assets/products/drink/d9.avif',
+    category: ['cold'],
+    price: 260,
+  },
+  {
+    _id: 10,
+    name: 'Кофе Американо',
+    description: '0,2 л',
+    image: '/assets/products/drink/c10.webp',
+    category: ['hot'],
+    price: 100,
+  },
+  {
+    _id: 11,
+    name: 'Кофе Американо',
+    description: '0,3 л',
+    image: '/assets/products/drink/c11.webp',
+    category: ['hot'],
+    price: 130,
+  },
+  {
+    _id: 12,
+    name: 'Кофе Капучино',
+    description: '0,2 л',
+    image: '/assets/products/drink/c12.webp',
+    category: ['hot'],
+    price: 100,
+  },
+  {
+    _id: 13,
+    name: 'Кофе Капучино',
+    description: '0,3 л',
+    image: '/assets/products/drink/c13.webp',
+    category: ['hot'],
+    price: 130,
+  },
+  {
+    _id: 14,
+    name: 'Кофе Латте',
+    description: '0,3 л',
+    image: '/assets/products/drink/c14.webp',
+    category: ['hot'],
+    price: 140,
+  },
+  {
+    _id: 15,
+    name: 'Чай Черный',
+    description: '0,3 л',
+    image: '/assets/products/drink/t15.webp',
+    category: ['hot'],
+    price: 80,
+  },
+  {
+    _id: 16,
+    name: 'Чай Зеленый',
+    description: '0,3 л',
+    image: '/assets/products/drink/t16.webp',
+    category: ['hot'],
+    price: 80,
   },
 ]
 

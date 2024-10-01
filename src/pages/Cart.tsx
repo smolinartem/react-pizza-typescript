@@ -40,18 +40,22 @@ const Cart = () => {
             order.map((item, index) => (
               /* Карточка товара */
               <li className='flex bg-white rounded-lg p-4 shadow-container' key={index}>
-                <div className='shrink-0 w-24 h-24 rounded-full overflow-hidden bg-gray-200'>
+                <div className='shrink-0 w-24 h-24 rounded-full overflow-hidden bg-white'>
                   <img src={item.image} alt={item.name} className='object-cover object-center' />
                 </div>
 
                 <div className='flex flex-col sm:flex-row items-center ml-4 w-full'>
                   <div className='grow'>
                     <h5 className='text-2xl'>{item.name}</h5>
-                    <span className='cart__options'>
-                      {`${RU_NAMES[item.size]}, ${RU_NAMES[item.thickness]}`}
-                      {item.toppings.length === 0
-                        ? ''
-                        : `, Добавить: ${translateToppings(item.toppings)}`}
+                    <span>
+                      {item.size && item.thickness
+                        ? `${RU_NAMES[item.size]}, ${RU_NAMES[item.thickness]}`
+                        : ''}
+                      {item.toppings
+                        ? item.toppings.length === 0
+                          ? ''
+                          : `, Добавить: ${translateToppings(item.toppings)}`
+                        : ''}
                     </span>
                   </div>
 
