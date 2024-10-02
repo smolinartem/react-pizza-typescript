@@ -12,3 +12,14 @@ export type Category = {
   value: string
   label: string
 }
+
+export type PizzaOrder = {
+  name: string
+  image: string
+  description: string
+  size: string
+  thickness: string
+  toppings: string[]
+  price: number
+  amount: number
+}

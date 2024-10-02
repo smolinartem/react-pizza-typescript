@@ -16,6 +16,9 @@ type PizzaFormProps = {
 const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
   const dispatch = useDispatch()
   const option = useSelector((state: RootState) => state.option)
+  const order = useSelector((state: RootState) => state.order)
+
+  console.log(order)
 
   const weight = calculatePizza(option, WEIGHT)
   const price = calculatePizza(option, PRICE)
