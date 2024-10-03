@@ -1,4 +1,6 @@
 import classNames from 'classnames'
+import { X } from 'lucide-react'
+import { useMenuClose } from '../hooks/useMenuClose'
 
 type PopupProps = {
   isOpen: boolean
@@ -7,6 +9,7 @@ type PopupProps = {
 }
 
 export default function Popup({ isOpen, onClose, children }: PopupProps) {
+  useMenuClose(isOpen, onClose)
   return (
     <section
       className={classNames(
@@ -17,8 +20,10 @@ export default function Popup({ isOpen, onClose, children }: PopupProps) {
       <div className='bg-white relative w-full h-full overflow-y-auto px-6 py-20 md:p-10 md:max-w-screen-md md:h-auto md:rounded-lg'>
         <button
           onClick={onClose}
-          className='absolute bg-close bg-with-image size-10 top-4 right-4 sm:top-8 sm:right-8 circle-animation'
-        />
+          className='flex-center absolute size-10 top-4 right-4 sm:top-8 sm:right-8 circle-animation'
+        >
+          <X color='#292524' strokeWidth={1.25} size={32} />
+        </button>
         {children}
       </div>
     </section>

@@ -7,8 +7,11 @@ import Navigation from './Navigation'
 import ButtonCart from './ButtonCart'
 import ButtonBurger from './ButtonBurger'
 import SideBarMenu from './SideBarMenu'
+import ButtonAccount from './ButtonAccount'
+import ButtonAuth from './ButtonAuth'
 
 export default function Header() {
+  const [user] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const handleClose = () => setMenuOpen(false)
@@ -20,7 +23,8 @@ export default function Header() {
         <div className='container max-w-screen-xl flex justify-between items-center h-full rounded-b-xl shadow-one bg-white'>
           <Logo onClose={handleClose} />
           <Navigation />
-          <div className='flex items-center gap-6'>
+          <div className='flex items-center gap-4'>
+            {user ? <ButtonAccount /> : <ButtonAuth />}
             <ButtonCart onClose={handleClose} />
             <ButtonBurger onToggle={toggleMenu} isOpen={menuOpen} />
           </div>

@@ -1,4 +1,3 @@
-import { useMenuClose } from '../hooks/useMenuClose'
 import type { Product } from '../types/index.types'
 // - components
 import Popup from './Popup'
@@ -14,8 +13,6 @@ interface SelectionMenuProps {
 // - max-w-80
 
 export default function PopupSelectionMenu({ selectedPizza, isOpen, onClose }: SelectionMenuProps) {
-  useMenuClose(isOpen, onClose)
-
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
       <div className='grid gap-6 sm:grid-cols-2'>

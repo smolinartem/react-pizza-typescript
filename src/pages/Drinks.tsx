@@ -1,5 +1,6 @@
-import { useDispatch } from 'react-redux'
-import { addOrder } from '../store/order/orderSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addOrder, increaseAmount } from '../store/order/orderSlice'
+import { RootState } from '../store/store'
 
 import { drinks, drinksCategories } from '../utils/server'
 import { Product } from '../types/index.types'
@@ -11,6 +12,7 @@ import ProductCard from '../components/ProductCard'
 export default function Drinks() {
   const { shownProducts, changeCategory, selected } = useProductCategory(drinks)
   const dispatch = useDispatch()
+  const order = useSelector((state: RootState) => state.order)
 
   const handleAddDrink = (drink: Product) => {
     const newOrder = {
@@ -20,7 +22,16 @@ export default function Drinks() {
       price: drink.price as number,
       amount: 1,
     }
-    dispatch(addOrder(newOrder))
+
+    if (order.length === 0) {
+      dispatch(addOrder(newOrder))
+    } else {
+      const index = order.findIndex((item) => {
+        return item.name === newOrder.name && item.description === newOrder.description
+      })
+
+      index === -1 ? dispatch(addOrder(newOrder)) : dispatch(increaseAmount(index))
+    }
   }
 
   return (

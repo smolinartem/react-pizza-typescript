@@ -7,6 +7,7 @@ import Promos from './pages/Promos'
 import Contacts from './pages/Contacts'
 import ErrorPage from './pages/ErrorPage'
 import Cart from './pages/Cart'
+import Profile from './pages/Profile'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart />,
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
       },
     ],
   },
