@@ -31,6 +31,12 @@ const orderSlice = createSlice({
       const index = action.payload
       state[index].amount++
     },
+    increaseAmountByNum: (state, action: PayloadAction<{ index: number; num: number }>) => {
+      const index = action.payload.index
+      const num = action.payload.num
+
+      state[index].amount = num
+    },
     decreaseAmount: (state, action: PayloadAction<number>) => {
       const index = action.payload
       state[index].amount--
@@ -38,6 +44,12 @@ const orderSlice = createSlice({
   },
 })
 
-export const { addOrder, deleteItem, clearOrder, increaseAmount, decreaseAmount } =
-  orderSlice.actions
+export const {
+  addOrder,
+  deleteItem,
+  clearOrder,
+  increaseAmount,
+  increaseAmountByNum,
+  decreaseAmount,
+} = orderSlice.actions
 export default orderSlice.reducer

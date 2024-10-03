@@ -8,7 +8,7 @@ export default function OrderList() {
   return (
     <ul className='flex flex-col gap-3'>
       {order.map((item, index) => (
-        <OrderCard item={item} index={index} />
+        <OrderCard key={index} item={item} index={index} />
       ))}
     </ul>
   )

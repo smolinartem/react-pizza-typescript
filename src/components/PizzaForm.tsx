@@ -1,6 +1,7 @@
+import isEqual from 'lodash.isequal'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeSize, changeThickness, updateToppings } from '../store/option/optionSlice'
-import { addOrder } from '../store/order/orderSlice'
+import { addOrder, increaseAmount } from '../store/order/orderSlice'
 import type { RootState } from '../store/store'
 import type { Product } from '../types/index.types'
 
@@ -18,7 +19,10 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
   const option = useSelector((state: RootState) => state.option)
   const order = useSelector((state: RootState) => state.order)
 
-  console.log(order)
+  /*   const [length, setLength] = useState('20')
+  useEffect(() => {
+    setLength('20')
+  }, []) */
 
   const weight = calculatePizza(option, WEIGHT)
   const price = calculatePizza(option, PRICE)
@@ -36,7 +40,21 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
       price: price,
       amount: 1,
     }
-    dispatch(addOrder(newOrder))
+
+    if (order.length === 0) {
+      dispatch(addOrder(newOrder))
+    } else {
+      const index = order.findIndex((item) => {
+        return (
+          item.name === newOrder.name &&
+          item.size === newOrder.size &&
+          item.thickness === newOrder.thickness &&
+          isEqual(item.toppings, newOrder.toppings)
+        )
+      })
+
+      index === -1 ? dispatch(addOrder(newOrder)) : dispatch(increaseAmount(index))
+    }
 
     onClose()
   }

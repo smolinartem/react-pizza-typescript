@@ -14,6 +14,9 @@
     "@heroicons/react": "^2.1.1",
     "@reduxjs/toolkit": "^2.1.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "lodash.isequal": "^4.5.0",
+    "lodash.isequalwith": "^4.4.0",
+    "lodash.omit": "^4.5.0",
     "lucide-react": "^0.446.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -21,6 +24,9 @@
     "react-router-dom": "^6.21.3"
   },
   "devDependencies": {
+    "@types/lodash.isequal": "^4.5.8",
+    "@types/lodash.isequalwith": "^4.4.9",
+    "@types/lodash.omit": "^4.5.9",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
