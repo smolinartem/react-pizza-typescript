@@ -17,7 +17,7 @@ export default function Popup({ isOpen, onClose, children }: PopupProps) {
         'transition-all duration-300 all-screen flex-center bg-black bg-opacity-50'
       )}
     >
-      <div className='bg-white relative w-full h-full overflow-y-auto px-6 py-20 md:p-10 md:max-w-screen-md md:h-auto md:rounded-lg'>
+      <div className='bg-white relative w-full h-full overflow-y-auto px-6 py-20 md:p-10 md:max-w-screen-md md:h-auto md:rounded-lg md:w-auto'>
         <button
           onClick={onClose}
           className='flex-center absolute size-10 top-4 right-4 sm:top-8 sm:right-8 circle-animation'
