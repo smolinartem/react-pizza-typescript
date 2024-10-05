@@ -17,7 +17,7 @@ export default function PizzasInfo({ pizza }: PizzaInfoProps) {
           className='h-full w-full object-cover object-center'
         />
       </div>
-      <span className='mt-4'>{pizza.description}</span>
+      <span className='my-4 text-center'>{pizza.description}</span>
     </div>
   )
 }

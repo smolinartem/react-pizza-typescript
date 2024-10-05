@@ -1,14 +1,12 @@
-import { UseFormRegister, FieldValues, Path } from 'react-hook-form'
-
-type ValidNames = 'name' | 'email' | 'password' | 'confirmPassword'
+import { UseFormRegister, FieldValues, FieldError, Path } from 'react-hook-form'
 
 type FormFieldProps<TFormData extends FieldValues> = {
   type: string
   placeholder?: string
   label: string
-  name: ValidNames
+  name: Path<TFormData>
   register: UseFormRegister<TFormData>
-  error: string | undefined
+  error: FieldError | undefined
   valueAsNumber?: boolean
 }
 
@@ -27,14 +25,14 @@ export default function FormFieldAuth<TFormData extends FieldValues>({
         {label}
 
         <input
-          {...register(name as Path<TFormData>, { valueAsNumber })}
+          {...register(name, { valueAsNumber })}
           type={type}
           autoComplete='off'
           placeholder={placeholder}
           className='block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-grey-900 sm:text-sm sm:leading-6'
         />
       </label>
-      <span className='block h-4 text-red-600 text-xs mb-1'>{error}</span>
+      <span className='block h-4 text-red-600 text-xs mb-1'>{error?.message}</span>
     </fieldset>
   )
 }

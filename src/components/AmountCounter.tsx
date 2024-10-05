@@ -12,6 +12,7 @@ export default function AmountCounter({ amount, index }: AmountCounterProps) {
   return (
     <div className='w-32 flex items-center justify-between'>
       <button
+        type='button'
         className={`size-10 flex-center border transition-all duration-300 rounded-full ${
           amount !== 1 && 'hover:border-accent'
         }`}
@@ -21,7 +22,11 @@ export default function AmountCounter({ amount, index }: AmountCounterProps) {
         <Minus color='#292524' strokeWidth={1} />
       </button>
       <span className='text-2xl'>{amount}</span>
-      <button className='button-order' onClick={() => dispatch(increaseAmount(index))}>
+      <button
+        type='button'
+        className='button-order'
+        onClick={() => dispatch(increaseAmount(index))}
+      >
         <Plus color='#292524' strokeWidth={1} />
       </button>
     </div>

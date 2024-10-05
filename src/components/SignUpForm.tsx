@@ -1,5 +1,8 @@
 import FormFieldAuth from './FormFieldAuth'
 
+import { useDispatch } from 'react-redux'
+import { createUser } from '../store/user/userSlice'
+
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -18,7 +21,8 @@ const RegisterFormSchema = z
 
 export type RegisterForm = z.infer<typeof RegisterFormSchema>
 
-export default function SignUpForm() {
+export default function SignUpForm({ onClose }: { onClose: () => void }) {
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -29,8 +33,15 @@ export default function SignUpForm() {
   })
 
   const onFormSubmit = (data: RegisterForm) => {
-    console.log(data)
+    const newUser = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      favouriteProducts: [],
+    }
+    dispatch(createUser(newUser))
     reset()
+    onClose()
   }
 
   return (
@@ -46,7 +57,7 @@ export default function SignUpForm() {
         label='Имя'
         name='name'
         register={register}
-        error={errors.name?.message}
+        error={errors.name}
       />
 
       <FormFieldAuth
@@ -55,7 +66,7 @@ export default function SignUpForm() {
         label='Email'
         name='email'
         register={register}
-        error={errors.email?.message}
+        error={errors.email}
       />
 
       <FormFieldAuth
@@ -63,7 +74,7 @@ export default function SignUpForm() {
         label='Пароль'
         name='password'
         register={register}
-        error={errors.password?.message}
+        error={errors.password}
       />
 
       <FormFieldAuth
@@ -71,7 +82,7 @@ export default function SignUpForm() {
         label='Повторите пароль'
         name='confirmPassword'
         register={register}
-        error={errors.confirmPassword?.message}
+        error={errors.confirmPassword}
       />
 
       <button className='button py-4 w-full mt-8' type='submit'>

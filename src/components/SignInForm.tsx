@@ -38,7 +38,7 @@ export default function SignInForm() {
         label='Email'
         name='email'
         register={register}
-        error={errors.email?.message}
+        error={errors.email}
       />
 
       <FormFieldAuth
@@ -46,7 +46,7 @@ export default function SignInForm() {
         label='Пароль'
         name='password'
         register={register}
-        error={errors.password?.message}
+        error={errors.password}
       />
       <button className='button py-4 w-full mt-8' type='submit'>
         Вход

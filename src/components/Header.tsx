@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store/store'
 // - hooks
 import { useMenuClose } from '../hooks/useMenuClose'
 // - components
@@ -11,11 +13,13 @@ import ButtonAccount from './ButtonAccount'
 import ButtonAuth from './ButtonAuth'
 
 export default function Header() {
-  const [user] = useState(false)
+  const user = useSelector((state: RootState) => state.user)
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const handleClose = () => setMenuOpen(false)
   useMenuClose(menuOpen, handleClose)
+
+  console.log(user)
 
   return (
     <>

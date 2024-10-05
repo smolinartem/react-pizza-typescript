@@ -16,7 +16,8 @@ export default function PopupAuth({ isOpen, onClose }: PopupAuthProps) {
 
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
-      {action === 'register' ? <SignUpForm /> : <SignInForm />}
+      {action === 'register' ? <SignUpForm onClose={onClose} /> : <SignInForm />}
+
       <button
         type='button'
         className='mt-4 text-center w-full'

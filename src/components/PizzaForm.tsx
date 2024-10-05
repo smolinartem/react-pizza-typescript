@@ -61,7 +61,8 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-      <span className='text-lg font-bold'>Вес: {weight} г</span>
+      <span className='text-lg font-bold block'>Вес: {weight} г</span>
+
       <div className='flex gap-2 sm:gap-3'>
         <label className='form-label text-center'>
           <input
