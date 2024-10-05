@@ -10,17 +10,21 @@ export type User = {
   name: string
   email: string
   password: string
-  favouriteProducts: FavoriteProduct[] | []
+  birthday?: string
+  phone?: string
+  favouriteProducts?: FavoriteProduct[]
 } | null
 
-const initialState = null as User
+const initialState = {
+  user: null as User,
+}
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     createUser: (state, action: PayloadAction<User>) => {
-      return action.payload
+      state.user = action.payload
     },
     deleteUser: () => initialState,
   },

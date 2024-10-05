@@ -37,7 +37,6 @@ export default function SignUpForm({ onClose }: { onClose: () => void }) {
       name: data.name,
       email: data.email,
       password: data.password,
-      favouriteProducts: [],
     }
     dispatch(createUser(newUser))
     reset()

@@ -13,7 +13,7 @@ import ButtonAccount from './ButtonAccount'
 import ButtonAuth from './ButtonAuth'
 
 export default function Header() {
-  const user = useSelector((state: RootState) => state.user)
+  const user = useSelector((state: RootState) => state.user.user)
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const handleClose = () => setMenuOpen(false)
