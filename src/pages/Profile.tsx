@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { RootState } from '../store/store'
-import { deleteUser } from '../store/user/userSlice'
-import { Cake, LogOut, Mail, Phone, Settings, UserRound } from 'lucide-react'
+import { deleteUser, deleteFavoriteProduct } from '../store/user/userSlice'
+import { ArrowLeft, Cake, LogOut, Mail, Phone, Settings, Trash, UserRound } from 'lucide-react'
 import { useState } from 'react'
 import PopupProfileEdit from '../components/PopupProfileEdit'
 
@@ -9,16 +10,41 @@ export default function Profile() {
   const user = useSelector((state: RootState) => state.user.user)
   const dispatch = useDispatch()
 
+  const navigate = useNavigate()
+
   const [settingsOpen, setSettingsOpen] = useState(false)
+
+  /*   const [selectionMenuOpen, setSelectionMenuOpen] = useState(false)
+  const [selectedPizza, setSelectedPizza] = useState<Product | null>(null)
+
+  const handlePopupOpen = (pizza: Product) => {
+    dispatch(resetOptions())
+    setSelectedPizza(pizza)
+    setSelectionMenuOpen(true)
+  }
+  const handlePopupClose = () => {
+    setSelectionMenuOpen(false)
+  } */
 
   console.log(user)
 
   return (
     <div className='section-container'>
-      <h2 className='text-3xl font-semibold'>Профиль</h2>
+      <div className='flex gap-4 items-center'>
+        <button
+          onClick={() => {
+            navigate(-1)
+          }}
+          className='button-order'
+        >
+          <ArrowLeft color='#292524' strokeWidth={1.5} />
+        </button>
+        <h2 className='text-3xl font-semibold'>Профиль</h2>
+      </div>
+
       {user && (
         <div className='flex gap-6 my-8'>
-          <ul className='py-6 px-8 grid grid-cols-2 rounded-xl gap-5 shadow-one h-max w-full'>
+          <ul className='py-6 px-8 grid grid-cols-2 rounded-xl gap-5 shadow-one h-max w-full max-w-2xl'>
             <li className='flex gap-2'>
               <div className='size-12 flex-center rounded-lg bg-accent shrink-0'>
                 <UserRound size={40} strokeWidth={1.5} color='white' />
@@ -59,9 +85,9 @@ export default function Profile() {
               </div>
             </li>
 
-            <div className='col-span-2 flex items-center justify-between'>
+            <div className='flex items-center justify-between gap-1'>
               <button
-                className='flex gap-2 border-2 px-4 py-2 rounded-lg'
+                className='flex gap-1 pr-4 py-2 shrink-0 text-sm'
                 onClick={() => dispatch(deleteUser())}
               >
                 <LogOut size={20} strokeWidth={1.5} />
@@ -70,33 +96,40 @@ export default function Profile() {
 
               <button
                 onClick={() => setSettingsOpen(true)}
-                className='flex gap-2 border-2 px-4 py-2 rounded-lg'
+                className='flex gap-1 pr-4 py-2 shrink-0 text-sm'
               >
                 <Settings size={20} strokeWidth={1.5} />
                 Редактировать
               </button>
 
-              <button className='flex gap-2 border-2 px-4 py-2 rounded-lg'>
+              <button className='flex gap-1 pr-4 py-2 shrink-0 text-sm'>
                 <Settings size={20} strokeWidth={1.5} />
                 Сменить пароль
               </button>
             </div>
           </ul>
 
-          <div className='py-6 px-8 rounded-xl gap-5 shadow-one max-w-2xl'>
-            <h2>Избранные продукты</h2>
+          <div className='py-6 px-8 rounded-xl gap-5 shadow-one w-full max-w-2xl'>
+            <h2 className='text-xl mb-6'>Избранные продукты</h2>
             {user.favourite && (
               <ul className='flex flex-col gap-4'>
                 {user.favourite.map((fav) => (
-                  <li key={fav.name} className='flex gap-2'>
+                  <li key={fav.name} className='flex items-center gap-2'>
                     <div className='shrink-0 size-24 rounded-full overflow-hidden bg-white'>
                       <img src={fav.image} alt={fav.name} className='object-cover object-center' />
                     </div>
 
-                    <div className='flex flex-col justify-center'>
+                    <div className='flex flex-col justify-center grow'>
                       <span className='text-sm text-stone-800 font-semibold'>{fav.name}</span>
                       <span className='text-xs text-stone-800'>{fav.description}</span>
                     </div>
+
+                    <button
+                      onClick={() => dispatch(deleteFavoriteProduct(fav))}
+                      className='shrink-0 size-10 flex-center border transition-all duration-300 rounded-full hover:border-accent'
+                    >
+                      <Trash color='#292524' strokeWidth={1.5} />
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -108,6 +141,14 @@ export default function Profile() {
       {settingsOpen && (
         <PopupProfileEdit isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
       )}
+
+      {/*       {selectedPizza && (
+        <PopupSelectionMenu
+          selectedPizza={selectedPizza}
+          isOpen={popupOpen}
+          onClose={handlePopupClose}
+        />
+      )} */}
     </div>
   )
 }
