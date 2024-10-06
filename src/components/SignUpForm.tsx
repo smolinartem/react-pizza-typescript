@@ -37,6 +37,7 @@ export default function SignUpForm({ onClose }: { onClose: () => void }) {
       name: data.name,
       email: data.email,
       password: data.password,
+      favourite: [],
     }
     dispatch(createUser(newUser))
     reset()
@@ -60,7 +61,7 @@ export default function SignUpForm({ onClose }: { onClose: () => void }) {
       />
 
       <FormFieldAuth
-        type='text'
+        type='email'
         placeholder='ivan@ivanov.ru'
         label='Email'
         name='email'

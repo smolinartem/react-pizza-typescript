@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { ProfileEditForm } from '../../components/PopupProfileEdit'
 
 type FavoriteProduct = {
   name: string
@@ -12,7 +13,7 @@ export type User = {
   password: string
   birthday?: string
   phone?: string
-  favouriteProducts?: FavoriteProduct[]
+  favourite: FavoriteProduct[]
 } | null
 
 const initialState = {
@@ -27,8 +28,36 @@ const userSlice = createSlice({
       state.user = action.payload
     },
     deleteUser: () => initialState,
+    addFavoriteProduct: (state, action: PayloadAction<FavoriteProduct>) => {
+      if (state.user) {
+        if (state.user.favourite.find((product) => product.name === action.payload.name)) {
+          state.user.favourite = state.user.favourite.filter(
+            (product) => product.name !== action.payload.name
+          )
+        } else {
+          state.user.favourite.push(action.payload)
+        }
+      }
+    },
+    editProfile: (state, action: PayloadAction<ProfileEditForm>) => {
+      const { name, email, birthday, phone } = action.payload
+      if (state.user) {
+        if (name) {
+          state.user.name = name
+        }
+        if (email) {
+          state.user.email = email
+        }
+        if (birthday) {
+          state.user.birthday = birthday
+        }
+        if (phone) {
+          state.user.phone = phone
+        }
+      }
+    },
   },
 })
 
-export const { createUser, deleteUser } = userSlice.actions
+export const { createUser, deleteUser, addFavoriteProduct, editProfile } = userSlice.actions
 export default userSlice.reducer

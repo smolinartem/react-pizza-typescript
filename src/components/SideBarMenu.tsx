@@ -12,7 +12,7 @@ export default function SideBarMenu({ isOpen, onClose }: SideBarProps) {
     <div
       className={classNames(
         isOpen ? 'w-full sm:w-2/4 opened' : 'w-0',
-        'fixed top-0 bottom-0 right-0 z-10 pt-16 bg-white overflow-y-auto flex flex-col items-end sm:border-l transition-all duration-300 md:hidden'
+        'fixed top-0 bottom-0 right-0 z-20 pt-16 bg-white overflow-y-auto flex flex-col items-end sm:border-l transition-all duration-300 md:hidden'
       )}
     >
       <nav className='py-8 px-10 flex flex-col gap-y-6 w-full text-xl font-bold'>

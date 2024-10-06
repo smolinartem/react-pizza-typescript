@@ -19,8 +19,6 @@ export default function Header() {
   const handleClose = () => setMenuOpen(false)
   useMenuClose(menuOpen, handleClose)
 
-  console.log(user)
-
   return (
     <>
       <header className='fixed w-full inset-0 z-40 h-16 md:h-24'>
