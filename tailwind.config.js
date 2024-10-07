@@ -13,6 +13,7 @@ export default {
       },
       fontFamily: {
         body: ['Comfortaa', 'ui-sans-serif'],
+        title: ['DelaGothicOne'],
       },
       colors: {
         accent: '#D92121',

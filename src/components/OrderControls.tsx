@@ -12,12 +12,12 @@ type OrderControlsProps = {
 export default function OrderControls({ amount, index, price }: OrderControlsProps) {
   const dispatch = useDispatch()
   return (
-    <div className='flex items-center gap-4'>
+    <div className='flex items-center gap-2 md:gap-4'>
       <AmountCounter amount={amount} index={index} />
 
-      <span className='w-24 text-center text-xl md:text-2xl'>{price * amount}&#8381;</span>
+      <span className='w-20 md:w-24 text-center text-lg md:text-2xl'>{price * amount}&#8381;</span>
 
-      <button onClick={() => dispatch(deleteItem(index))} className='button-order'>
+      <button onClick={() => dispatch(deleteItem(index))} className='sm:button-order hidden'>
         <Trash color='#292524' strokeWidth={1.5} />
       </button>
     </div>

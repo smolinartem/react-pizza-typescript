@@ -25,9 +25,9 @@ const userSlice = createSlice({
     deleteUser: () => initialState,
     addFavoriteProduct: (state, action: PayloadAction<Product>) => {
       if (state.user) {
-        if (state.user.favourite.find((product) => product.name === action.payload.name)) {
+        if (state.user.favourite.find((product) => product._id === action.payload._id)) {
           state.user.favourite = state.user.favourite.filter(
-            (product) => product.name !== action.payload.name
+            (product) => product._id !== action.payload._id
           )
         } else {
           state.user.favourite.push(action.payload)
@@ -54,7 +54,7 @@ const userSlice = createSlice({
     deleteFavoriteProduct: (state, action: PayloadAction<Product>) => {
       if (state.user) {
         state.user.favourite = state.user.favourite.filter(
-          (product) => product.name !== action.payload.name
+          (product) => product._id !== action.payload._id
         )
       }
     },

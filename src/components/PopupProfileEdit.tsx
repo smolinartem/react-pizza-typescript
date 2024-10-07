@@ -51,7 +51,7 @@ export default function PopupProfileEdit({ isOpen, onClose }: PopupProfileEditPr
     <Popup isOpen={isOpen} onClose={onClose}>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
-        className='border-2 rounded-lg py-8 px-6 sm:w-96 mx-auto md:mt-10'
+        className='sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'
       >
         <h2 className='text-center text-2xl mb-8'>Редактировать</h2>
 
@@ -91,11 +91,11 @@ export default function PopupProfileEdit({ isOpen, onClose }: PopupProfileEditPr
           error={errors.birthday}
         />
 
-        <div className='flex gap-4'>
-          <button className='button py-4 w-full mt-8' type='submit'>
+        <div className='mt-8 flex flex-col gap-4'>
+          <button className='button py-4 w-full' type='submit'>
             Редактировать
           </button>
-          <button onClick={() => onClose()} className='button py-4 w-full mt-8' type='reset'>
+          <button onClick={() => onClose()} className='button py-4 w-full' type='reset'>
             Отменить
           </button>
         </div>

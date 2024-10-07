@@ -169,7 +169,7 @@ export const pizzas: Product[] = [
 
 export const drinks: Product[] = [
   {
-    _id: 1,
+    _id: 21,
     name: 'Добрый Апельсин',
     description: '0,5 л',
     image: '/assets/products/drink/d1.avif',
@@ -177,7 +177,7 @@ export const drinks: Product[] = [
     price: 140,
   },
   {
-    _id: 2,
+    _id: 22,
     name: 'Добрый Лимон-Лайм',
     description: '0,5 л',
     image: '/assets/products/drink/d2.avif',
@@ -185,7 +185,7 @@ export const drinks: Product[] = [
     price: 140,
   },
   {
-    _id: 3,
+    _id: 23,
     name: 'Добрый Кола',
     description: '0,5 л',
     image: '/assets/products/drink/d3.avif',
@@ -193,7 +193,7 @@ export const drinks: Product[] = [
     price: 140,
   },
   {
-    _id: 4,
+    _id: 24,
     name: 'Rich Tea Черный с лимоном',
     description: '0,5 л',
     image: '/assets/products/drink/d4.avif',
@@ -201,7 +201,7 @@ export const drinks: Product[] = [
     price: 160,
   },
   {
-    _id: 5,
+    _id: 25,
     name: 'Rich Tea Зеленый',
     description: '0,5 л',
     image: '/assets/products/drink/d5.avif',
@@ -209,7 +209,7 @@ export const drinks: Product[] = [
     price: 160,
   },
   {
-    _id: 6,
+    _id: 26,
     name: 'Rich Tea Зеленый с манго',
     description: '0,5 л',
     image: '/assets/products/drink/d6.avif',
@@ -217,7 +217,7 @@ export const drinks: Product[] = [
     price: 160,
   },
   {
-    _id: 7,
+    _id: 27,
     name: 'Апельсиновый сок Rich',
     description: '1 л',
     image: '/assets/products/drink/d7.avif',
@@ -225,7 +225,7 @@ export const drinks: Product[] = [
     price: 260,
   },
   {
-    _id: 8,
+    _id: 28,
     name: 'Яблочный сок Rich',
     description: '1 л',
     image: '/assets/products/drink/d8.avif',
@@ -233,7 +233,7 @@ export const drinks: Product[] = [
     price: 260,
   },
   {
-    _id: 9,
+    _id: 29,
     name: 'Вишневый нектар Rich',
     description: '1 л',
     image: '/assets/products/drink/d9.avif',
@@ -241,7 +241,7 @@ export const drinks: Product[] = [
     price: 260,
   },
   {
-    _id: 10,
+    _id: 30,
     name: 'Кофе Американо',
     description: '0,2 л',
     image: '/assets/products/drink/c10.webp',
@@ -249,7 +249,7 @@ export const drinks: Product[] = [
     price: 100,
   },
   {
-    _id: 11,
+    _id: 31,
     name: 'Кофе Американо',
     description: '0,3 л',
     image: '/assets/products/drink/c11.webp',
@@ -257,7 +257,7 @@ export const drinks: Product[] = [
     price: 130,
   },
   {
-    _id: 12,
+    _id: 32,
     name: 'Кофе Капучино',
     description: '0,2 л',
     image: '/assets/products/drink/c12.webp',
@@ -265,7 +265,7 @@ export const drinks: Product[] = [
     price: 100,
   },
   {
-    _id: 13,
+    _id: 33,
     name: 'Кофе Капучино',
     description: '0,3 л',
     image: '/assets/products/drink/c13.webp',
@@ -273,7 +273,7 @@ export const drinks: Product[] = [
     price: 130,
   },
   {
-    _id: 14,
+    _id: 34,
     name: 'Кофе Латте',
     description: '0,3 л',
     image: '/assets/products/drink/c14.webp',
@@ -281,7 +281,7 @@ export const drinks: Product[] = [
     price: 140,
   },
   {
-    _id: 15,
+    _id: 35,
     name: 'Чай Черный',
     description: '0,3 л',
     image: '/assets/products/drink/t15.webp',
@@ -289,7 +289,7 @@ export const drinks: Product[] = [
     price: 80,
   },
   {
-    _id: 16,
+    _id: 36,
     name: 'Чай Зеленый',
     description: '0,3 л',
     image: '/assets/products/drink/t16.webp',

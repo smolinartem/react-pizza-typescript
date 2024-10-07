@@ -10,7 +10,7 @@ type AmountCounterProps = {
 export default function AmountCounter({ amount, index }: AmountCounterProps) {
   const dispatch = useDispatch()
   return (
-    <div className='w-32 flex items-center justify-between'>
+    <div className='w-28 md:w-32 flex items-center justify-between'>
       <button
         type='button'
         className={`size-10 flex-center border transition-all duration-300 rounded-full ${
@@ -21,7 +21,7 @@ export default function AmountCounter({ amount, index }: AmountCounterProps) {
       >
         <Minus color='#292524' strokeWidth={1} />
       </button>
-      <span className='text-2xl'>{amount}</span>
+      <span className='text-lg md:text-2xl'>{amount}</span>
       <button
         type='button'
         className='button-order'

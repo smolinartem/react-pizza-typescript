@@ -23,14 +23,18 @@ export default function ProductCard({ onCardClick, product }: ProductCardProps) 
       setAuthOpen(true)
     }
   }
-  const isLiked = user?.favourite?.find((fav) => fav.name === product.name)
+  const isLiked = user?.favourite?.find((fav) => fav._id === product._id)
 
   return (
     <>
       <PopupUnauthorized isOpen={authOpen} onClose={() => setAuthOpen(false)} />
       <article className='relative group flex'>
         <button onClick={() => handleLike()} className='absolute flex-center size-6 right-2 z-10'>
-          <Heart size={24} color={isLiked ? '#D92121' : '#525252'} />
+          <Heart
+            size={24}
+            fill={isLiked ? '#D92121' : 'white'}
+            color={isLiked ? '#D92121' : '#525252'}
+          />
         </button>
 
         <div onClick={() => onCardClick(product)} className='flex flex-col cursor-pointer group'>

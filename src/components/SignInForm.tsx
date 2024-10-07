@@ -29,7 +29,7 @@ export default function SignInForm() {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className='border-2 rounded-lg py-8 px-6 sm:w-96 mx-auto md:mt-10'
+      className='sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'
     >
       <h2 className='text-center text-2xl mb-8'>Вход</h2>
       <FormFieldAuth

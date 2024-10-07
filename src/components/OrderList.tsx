@@ -6,7 +6,7 @@ import OrderCard from './OrderCard'
 export default function OrderList() {
   const order = useSelector((state: RootState) => state.order)
   return (
-    <ul className='flex flex-col gap-3'>
+    <ul className='grid sm:grid-cols-2 gap-3'>
       {order.map((item, index) => (
         <OrderCard key={index} item={item} index={index} />
       ))}

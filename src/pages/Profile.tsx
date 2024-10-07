@@ -39,19 +39,19 @@ export default function Profile() {
         >
           <ArrowLeft color='#292524' strokeWidth={1.5} />
         </button>
-        <h2 className='text-3xl font-semibold'>Профиль</h2>
+        <h2 className='text-2xl font-title uppercase'>Профиль</h2>
       </div>
 
       {user && (
-        <div className='flex gap-6 my-8'>
-          <ul className='py-6 px-8 grid grid-cols-2 rounded-xl gap-5 shadow-one h-max w-full max-w-2xl'>
+        <div className='gap-6 mt-6 md:grid md:grid-cols-2 md:gap-4'>
+          <ul className='grid gap-2 h-max w-full mb-6 md:rounded-xl md:shadow-one md:px-4 md:py-6'>
             <li className='flex gap-2'>
               <div className='size-12 flex-center rounded-lg bg-accent shrink-0'>
                 <UserRound size={40} strokeWidth={1.5} color='white' />
               </div>
               <div className='flex flex-col'>
-                <span className='text-xs text-stone-800'>Ваше имя</span>
-                <span>{user.name}</span>
+                <span className='text-xs text-stone-800 font-semibold'>Ваше имя</span>
+                <span className='text-sm'>{user.name}</span>
               </div>
             </li>
 
@@ -60,8 +60,8 @@ export default function Profile() {
                 <Mail size={40} strokeWidth={1.5} color='white' />
               </div>
               <div className='flex flex-col'>
-                <span className='text-xs text-stone-800'>Ваш email</span>
-                <span>{user.email}</span>
+                <span className='text-xs text-stone-800 font-semibold'>Ваш email</span>
+                <span className='text-sm'>{user.email}</span>
               </div>
             </li>
 
@@ -70,8 +70,8 @@ export default function Profile() {
                 <Phone size={40} strokeWidth={1.5} color='white' />
               </div>
               <div className='flex flex-col'>
-                <span className='text-xs text-stone-800'>Ваш телефон</span>
-                <span>{user.phone ? user.phone : 'Не указан'}</span>
+                <span className='text-xs text-stone-800 font-semibold'>Ваш телефон</span>
+                <span className='text-sm'>{user.phone ? user.phone : 'Не указан'}</span>
               </div>
             </li>
 
@@ -80,12 +80,12 @@ export default function Profile() {
                 <Cake size={40} strokeWidth={1.5} color='white' />
               </div>
               <div className='flex flex-col'>
-                <span className='text-xs text-stone-800'>Ваш день рождения</span>
-                <span>{user.birthday ? user.birthday : 'Не указан'}</span>
+                <span className='text-xs text-stone-800 font-semibold'>Ваш день рождения</span>
+                <span className='text-sm'>{user.birthday ? user.birthday : 'Не указан'}</span>
               </div>
             </li>
 
-            <div className='flex items-center justify-between gap-1'>
+            <div className='flex flex-col items-end gap-1'>
               <button
                 className='flex gap-1 pr-4 py-2 shrink-0 text-sm'
                 onClick={() => dispatch(deleteUser())}
@@ -109,32 +109,44 @@ export default function Profile() {
             </div>
           </ul>
 
-          <div className='py-6 px-8 rounded-xl gap-5 shadow-one w-full max-w-2xl'>
-            <h2 className='text-xl mb-6'>Избранные продукты</h2>
-            {user.favourite && (
+          {user.favourite.length > 0 && (
+            <div className='w-full md:rounded-xl md:shadow-one md:px-4 md:py-6'>
+              <h2 className='text-xl mb-6 text-center'>Избранные продукты</h2>
+
               <ul className='flex flex-col gap-4'>
                 {user.favourite.map((fav) => (
-                  <li key={fav.name} className='flex items-center gap-2'>
+                  <li key={fav._id} className='flex items-center gap-2 w-full'>
                     <div className='shrink-0 size-24 rounded-full overflow-hidden bg-white'>
                       <img src={fav.image} alt={fav.name} className='object-cover object-center' />
                     </div>
 
-                    <div className='flex flex-col justify-center grow'>
-                      <span className='text-sm text-stone-800 font-semibold'>{fav.name}</span>
+                    <div className='flex flex-col gap-2 w-full sm:grow'>
+                      <div className='flex items-center gap-2 w-full'>
+                        <span className='text-sm text-stone-800 font-semibold grow'>
+                          {fav.name}
+                        </span>
+                        <button
+                          onClick={() => dispatch(deleteFavoriteProduct(fav))}
+                          className='sm:hidden shrink-0 size-8 flex-center border transition-all duration-300 rounded-full hover:border-accent'
+                        >
+                          <Trash color='#292524' size={20} strokeWidth={1.5} />
+                        </button>
+                      </div>
+
                       <span className='text-xs text-stone-800'>{fav.description}</span>
                     </div>
 
                     <button
                       onClick={() => dispatch(deleteFavoriteProduct(fav))}
-                      className='shrink-0 size-10 flex-center border transition-all duration-300 rounded-full hover:border-accent'
+                      className='hidden shrink-0 size-8 sm:flex items-center justify-center border transition-all duration-300 rounded-full hover:border-accent'
                     >
-                      <Trash color='#292524' strokeWidth={1.5} />
+                      <Trash color='#292524' size={20} strokeWidth={1.5} />
                     </button>
                   </li>
                 ))}
               </ul>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       )}
 
