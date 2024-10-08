@@ -13,17 +13,17 @@ type ProductCardProps = {
 
 export default function ProductCard({ onCardClick, product }: ProductCardProps) {
   const [authOpen, setAuthOpen] = useState(false)
-  const user = useSelector((state: RootState) => state.user.user)
+  const { userProducts, userInfo } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
 
   const handleLike = () => {
-    if (user) {
+    if (userInfo) {
       dispatch(addFavoriteProduct(product))
     } else {
       setAuthOpen(true)
     }
   }
-  const isLiked = user?.favourite?.find((fav) => fav._id === product._id)
+  const isLiked = userProducts.find((fav) => fav._id === product._id)
 
   return (
     <>

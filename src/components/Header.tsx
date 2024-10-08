@@ -13,7 +13,7 @@ import ButtonAccount from './ButtonAccount'
 import ButtonAuth from './ButtonAuth'
 
 export default function Header() {
-  const user = useSelector((state: RootState) => state.user.user)
+  const { userInfo } = useSelector((state: RootState) => state.user)
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const handleClose = () => setMenuOpen(false)
@@ -26,7 +26,7 @@ export default function Header() {
           <Logo onClose={handleClose} />
           <Navigation />
           <div className='flex items-center gap-4'>
-            {user ? <ButtonAccount /> : <ButtonAuth />}
+            {userInfo ? <ButtonAccount /> : <ButtonAuth />}
             <ButtonCart onClose={handleClose} />
             <ButtonBurger onToggle={toggleMenu} isOpen={menuOpen} />
           </div>

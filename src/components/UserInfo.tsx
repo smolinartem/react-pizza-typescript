@@ -6,13 +6,13 @@ import { Cake, LogOut, Mail, Phone, Settings, UserRound } from 'lucide-react'
 import PopupProfileEdit from './PopupProfileEdit'
 
 export default function UserInfo() {
-  const user = useSelector((state: RootState) => state.user.user)
+  const { userInfo } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
 
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   return (
-    user && (
+    userInfo && (
       <ul className='grid gap-2 h-max w-full mb-6 md:rounded-xl md:shadow-one md:px-4 md:py-6'>
         <li className='flex gap-2'>
           <div className='size-12 flex-center rounded-lg bg-accent shrink-0'>
@@ -20,7 +20,7 @@ export default function UserInfo() {
           </div>
           <div className='flex flex-col'>
             <span className='text-xs text-stone-800 font-semibold'>Ваше имя</span>
-            <span className='text-sm'>{user.name}</span>
+            <span className='text-sm'>{userInfo.name}</span>
           </div>
         </li>
 
@@ -30,7 +30,7 @@ export default function UserInfo() {
           </div>
           <div className='flex flex-col'>
             <span className='text-xs text-stone-800 font-semibold'>Ваш email</span>
-            <span className='text-sm'>{user.email}</span>
+            <span className='text-sm'>{userInfo.email}</span>
           </div>
         </li>
 
@@ -40,7 +40,7 @@ export default function UserInfo() {
           </div>
           <div className='flex flex-col'>
             <span className='text-xs text-stone-800 font-semibold'>Ваш телефон</span>
-            <span className='text-sm'>{user.phone ? user.phone : 'Не указан'}</span>
+            <span className='text-sm'>{userInfo.phone ? userInfo.phone : 'Не указан'}</span>
           </div>
         </li>
 
@@ -50,7 +50,7 @@ export default function UserInfo() {
           </div>
           <div className='flex flex-col'>
             <span className='text-xs text-stone-800 font-semibold'>Ваш день рождения</span>
-            <span className='text-sm'>{user.birthday ? user.birthday : 'Не указан'}</span>
+            <span className='text-sm'>{userInfo.birthday ? userInfo.birthday : 'Не указан'}</span>
           </div>
         </li>
 

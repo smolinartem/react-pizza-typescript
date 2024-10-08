@@ -8,6 +8,7 @@ import Contacts from './pages/Contacts'
 import ErrorPage from './pages/ErrorPage'
 import Cart from './pages/Cart'
 import Profile from './pages/Profile'
+import ProtectedRoute from './hoc/ProtectedRoute'
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element: <Profile />,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

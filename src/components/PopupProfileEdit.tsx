@@ -23,7 +23,7 @@ type PopupProfileEditProps = {
   onClose: () => void
 }
 export default function PopupProfileEdit({ isOpen, onClose }: PopupProfileEditProps) {
-  const user = useSelector((state: RootState) => state.user.user)
+  const { userInfo } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
 
   const {
@@ -34,10 +34,10 @@ export default function PopupProfileEdit({ isOpen, onClose }: PopupProfileEditPr
   } = useForm<ProfileEditForm>({
     resolver: zodResolver(ProfileEditFormSchema),
     defaultValues: {
-      name: user?.name,
-      email: user?.email,
-      phone: user?.phone,
-      birthday: user?.birthday,
+      name: userInfo?.name,
+      email: userInfo?.email,
+      phone: userInfo?.phone,
+      birthday: userInfo?.birthday,
     },
   })
 

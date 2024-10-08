@@ -23,3 +23,14 @@ export type PizzaOrder = {
   price: number
   amount: number
 }
+
+export type User = {
+  name: string
+  email: string
+  password: string
+  birthday?: string
+  phone?: string
+  favourite: Product[]
+}
+
+export type UserState = User | null

@@ -10,7 +10,7 @@ import { Trash } from 'lucide-react'
 import PopupSelectionMenu from './PopupSelectionMenu'
 
 export default function UserFavProducts() {
-  const user = useSelector((state: RootState) => state.user.user)
+  const { userInfo, userProducts } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
 
   const [selectionMenuOpen, setSelectionMenuOpen] = useState(false)
@@ -26,12 +26,12 @@ export default function UserFavProducts() {
   }
 
   return (
-    user && (
+    userInfo && (
       <div className='w-full md:rounded-xl md:shadow-one md:px-4 md:py-6'>
         <h2 className='text-xl mb-6 text-center'>Избранные продукты</h2>
 
         <ul className='flex flex-col gap-4'>
-          {user.favourite.map((fav) => (
+          {userProducts.map((fav) => (
             <li key={fav._id} className='flex items-center gap-2 w-full'>
               <div
                 onClick={() => handlePopupOpen(fav)}

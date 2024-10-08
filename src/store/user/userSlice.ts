@@ -1,18 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { ProfileEditForm } from '../../components/PopupProfileEdit'
-import type { Product } from '../../types/index.types'
-
-export type User = {
-  name: string
-  email: string
-  password: string
-  birthday?: string
-  phone?: string
-  favourite: Product[]
-} | null
+import type { Product, User, UserState } from '../../types/index.types'
 
 const initialState = {
-  user: null as User,
+  userInfo: null as UserState,
+  userProducts: [] as Product[],
 }
 
 const userSlice = createSlice({
@@ -20,43 +12,40 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     createUser: (state, action: PayloadAction<User>) => {
-      state.user = action.payload
+      state.userInfo = action.payload
     },
     deleteUser: () => initialState,
     addFavoriteProduct: (state, action: PayloadAction<Product>) => {
-      if (state.user) {
-        if (state.user.favourite.find((product) => product._id === action.payload._id)) {
-          state.user.favourite = state.user.favourite.filter(
-            (product) => product._id !== action.payload._id
-          )
-        } else {
-          state.user.favourite.push(action.payload)
-        }
+      if (state.userProducts.find((product) => product._id === action.payload._id)) {
+        state.userProducts = state.userProducts.filter(
+          (product) => product._id !== action.payload._id
+        )
+      } else {
+        state.userProducts.push(action.payload)
       }
     },
     editProfile: (state, action: PayloadAction<ProfileEditForm>) => {
+      const { userInfo } = state
       const { name, email, birthday, phone } = action.payload
-      if (state.user) {
+      if (userInfo) {
         if (name) {
-          state.user.name = name
+          userInfo.name = name
         }
         if (email) {
-          state.user.email = email
+          userInfo.email = email
         }
         if (birthday) {
-          state.user.birthday = birthday
+          userInfo.birthday = birthday
         }
         if (phone) {
-          state.user.phone = phone
+          userInfo.phone = phone
         }
       }
     },
     deleteFavoriteProduct: (state, action: PayloadAction<Product>) => {
-      if (state.user) {
-        state.user.favourite = state.user.favourite.filter(
-          (product) => product._id !== action.payload._id
-        )
-      }
+      state.userProducts = state.userProducts.filter(
+        (product) => product._id !== action.payload._id
+      )
     },
   },
 })
