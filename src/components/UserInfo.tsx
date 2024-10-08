@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/store'
 import { deleteUser } from '../store/user/userSlice'
 import { Cake, LogOut, Mail, Phone, Settings, UserRound } from 'lucide-react'
-import PopupProfileEdit from './PopupProfileEdit'
+import PopupProfileEdit from './popup/PopupProfileEdit'
 
 export default function UserInfo() {
   const { userInfo } = useSelector((state: RootState) => state.user)

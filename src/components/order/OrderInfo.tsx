@@ -1,7 +1,7 @@
-import { Order } from '../store/order/orderSlice'
-import { PizzaOrder } from '../types/index.types'
-import { RU_NAMES } from '../utils/constants'
-import { translateToppings } from '../utils/helpers'
+import { Order } from '../../store/order/orderSlice'
+import { PizzaOrder } from '../../types/index.types'
+import { RU_NAMES } from '../../utils/constants'
+import { translateToppings } from '../../utils/helpers'
 
 type OrderInfoProps = {
   item: Order

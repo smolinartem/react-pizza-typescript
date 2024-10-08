@@ -8,13 +8,19 @@ import { useProductCategory } from '../hooks/useProductCategory'
 // - components
 import Filters from '../components/Filters'
 import ProductCard from '../components/ProductCard'
+import { useState } from 'react'
+import PopupDrinkMenu from '../components/popup/PopupDrinkMenu'
 
 export default function Drinks() {
   const { shownProducts, changeCategory, selected } = useProductCategory(drinks)
   const dispatch = useDispatch()
   const order = useSelector((state: RootState) => state.order)
+  const [popupOpen, setPopupOpen] = useState(false)
+  const [selectedDrink, setSelectedDrink] = useState<Product | null>(null)
 
   const handleAddDrink = (drink: Product) => {
+    setSelectedDrink(drink)
+    setPopupOpen(true)
     const newOrder = {
       name: drink.name,
       image: drink.image,
@@ -36,6 +42,13 @@ export default function Drinks() {
 
   return (
     <div className='section-container'>
+      {selectedDrink && (
+        <PopupDrinkMenu
+          drink={selectedDrink}
+          open={popupOpen}
+          onClose={() => setPopupOpen(false)}
+        />
+      )}
       <Filters
         items={drinksCategories}
         categoryName='drinksCategories'

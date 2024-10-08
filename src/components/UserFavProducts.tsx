@@ -7,7 +7,7 @@ import { resetOptions } from '../store/option/optionSlice'
 
 import { Product } from '../types/index.types'
 import { Trash } from 'lucide-react'
-import PopupSelectionMenu from './PopupSelectionMenu'
+import PopupSelectionMenu from './popup/PopupSelectionMenu'
 
 export default function UserFavProducts() {
   const { userInfo, userProducts } = useSelector((state: RootState) => state.user)

@@ -4,7 +4,7 @@ import { addFavoriteProduct } from '../store/user/userSlice'
 import { Heart } from 'lucide-react'
 import type { Product } from '../types/index.types'
 import { useState } from 'react'
-import PopupUnauthorized from './PopupUnauthorized'
+import PopupUnauthorized from './popup/PopupUnauthorized'
 
 type ProductCardProps = {
   product: Product
@@ -27,7 +27,7 @@ export default function ProductCard({ onCardClick, product }: ProductCardProps) 
 
   return (
     <>
-      <PopupUnauthorized isOpen={authOpen} onClose={() => setAuthOpen(false)} />
+      {authOpen && <PopupUnauthorized isOpen={authOpen} onClose={() => setAuthOpen(false)} />}
       <article className='relative group flex'>
         <button onClick={() => handleLike()} className='absolute flex-center size-6 right-2 z-10'>
           <Heart

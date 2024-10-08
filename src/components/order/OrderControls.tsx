@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
-import { deleteItem } from '../store/order/orderSlice'
+import { deleteItem } from '../../store/order/orderSlice'
 import { Trash } from 'lucide-react'
-import AmountCounter from './AmountCounter'
+import AmountCounter from '../AmountCounter'
 
 type OrderControlsProps = {
   amount: number

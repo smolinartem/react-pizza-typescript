@@ -1,9 +1,9 @@
 import Popup from './Popup'
-import FormFieldAuth from './FormFieldAuth'
+import FormFieldAuth from '../FormFieldAuth'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../store/store'
-import { editProfile } from '../store/user/userSlice'
+import { RootState } from '../../store/store'
+import { editProfile } from '../../store/user/userSlice'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'

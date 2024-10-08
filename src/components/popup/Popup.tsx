@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { X } from 'lucide-react'
-import { useMenuClose } from '../hooks/useMenuClose'
+import { useMenuClose } from '../../hooks/useMenuClose'
 
 type PopupProps = {
   isOpen: boolean

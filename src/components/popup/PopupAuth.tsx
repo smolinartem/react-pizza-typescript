@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 import Popup from './Popup'
-import SignUpForm from './SignUpForm'
-import SignInForm from './SignInForm'
+import SignUpForm from '../SignUpForm'
+import SignInForm from '../SignInForm'
 
 type PopupAuthProps = {
   isOpen: boolean

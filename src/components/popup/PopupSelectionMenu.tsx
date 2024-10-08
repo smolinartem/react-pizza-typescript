@@ -1,8 +1,8 @@
-import type { Product } from '../types/index.types'
+import type { Product } from '../../types/index.types'
 // - components
 import Popup from './Popup'
-import PizzasInfo from './PizzaInfo'
-import PizzaForm from './PizzaForm'
+import PizzasInfo from '../PizzaInfo'
+import PizzaForm from '../PizzaForm'
 
 interface SelectionMenuProps {
   selectedPizza: Product

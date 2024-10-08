@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
-import { deleteItem } from '../store/order/orderSlice'
-import type { Order } from '../store/order/orderSlice'
+import { deleteItem } from '../../store/order/orderSlice'
+import type { Order } from '../../store/order/orderSlice'
 import OrderControls from './OrderControls'
 import OrderInfo from './OrderInfo'
 import { Trash } from 'lucide-react'

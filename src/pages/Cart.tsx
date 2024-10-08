@@ -3,7 +3,7 @@ import { RootState } from '../store/store'
 
 import CartHeader from '../components/CartHeader'
 import CartFooter from '../components/CartFooter'
-import OrderList from '../components/OrderList'
+import OrderList from '../components/order/OrderList'
 
 export default function Cart() {
   const order = useSelector((state: RootState) => state.order)

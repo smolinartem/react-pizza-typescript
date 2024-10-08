@@ -6,7 +6,7 @@ import { useProductCategory } from '../hooks/useProductCategory'
 import type { Product } from '../types/index.types'
 // - components
 import ProductCard from '../components/ProductCard'
-import PopupSelectionMenu from '../components/PopupSelectionMenu'
+import PopupSelectionMenu from '../components/popup/PopupSelectionMenu'
 import Filters from '../components/Filters'
 
 export default function Pizzas() {

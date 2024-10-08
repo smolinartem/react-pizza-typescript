@@ -7,7 +7,6 @@ type FiltersProps = {
   selected: string
 }
 
-// <ul className='flex items-center justify-center gap-6 mb-6'>
 export default function Filters({ items, categoryName, onSelect, selected }: FiltersProps) {
   return (
     <ul className='flex-center gap-2 mb-6 overflow-x-scroll scroll-pl-10 sm:overflow-x-hidden sm:scroll-pl-0'>
