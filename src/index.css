@@ -9,8 +9,7 @@
 @layer base {
   @font-face {
     font-family: 'Comfortaa';
-    src: url('./fonts/Comfortaa-Light.woff2') format('woff2'),
-      url('./fonts/Comfortaa-Light.woff') format('woff');
+    src: url('./fonts/Comfortaa-Light.woff2') format('woff2');
     font-display: swap;
     font-style: normal;
     font-weight: 300;
@@ -18,8 +17,7 @@
 
   @font-face {
     font-family: 'Comfortaa';
-    src: url('./fonts/Comfortaa-Regular.woff2') format('woff2'),
-      url('./fonts/Comfortaa-Regular.woff') format('woff');
+    src: url('./fonts/Comfortaa-Regular.woff2') format('woff2');
     font-display: swap;
     font-style: normal;
     font-weight: 400;
@@ -27,8 +25,7 @@
 
   @font-face {
     font-family: 'Comfortaa';
-    src: url('./fonts/Comfortaa-Bold.woff2') format('woff2'),
-      url('./fonts/Comfortaa-Bold.woff') format('woff');
+    src: url('./fonts/Comfortaa-Bold.woff2') format('woff2');
     font-display: swap;
     font-style: normal;
     font-weight: 700;
@@ -70,5 +67,11 @@
   }
   .button-order {
     @apply size-10 flex-center border transition-all duration-300 rounded-full hover:border-accent;
+  }
+  .popup {
+    @apply transition-all duration-300 all-screen flex-center bg-black bg-opacity-50;
+  }
+  .popup-container {
+    @apply bg-white relative w-full h-full overflow-y-scroll px-6 py-20 sm:p-10 sm:max-w-screen-md sm:overflow-y-visible sm:h-auto sm:rounded-xl;
   }
 }

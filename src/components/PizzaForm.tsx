@@ -179,8 +179,11 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
         </label>
       </div>
 
-      <button className='p-4 border rounded-md bg-accent text-white hover:opacity-80' type='submit'>
-        Добавить в корзину {price} &#8381;
+      <button
+        className='p-4 font-title text-sm uppercase rounded-md bg-accent text-white hover:opacity-80'
+        type='submit'
+      >
+        Добавить за <span className='text-lg'>{price}</span> Р
       </button>
     </form>
   )

@@ -10,8 +10,6 @@ interface SelectionMenuProps {
   onClose: () => void
 }
 
-// - max-w-80
-
 export default function PopupSelectionMenu({ selectedPizza, isOpen, onClose }: SelectionMenuProps) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>

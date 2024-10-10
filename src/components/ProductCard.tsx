@@ -28,8 +28,14 @@ export default function ProductCard({ onCardClick, product }: ProductCardProps) 
   return (
     <>
       {authOpen && <PopupUnauthorized isOpen={authOpen} onClose={() => setAuthOpen(false)} />}
-      <article className='relative group flex'>
-        <button onClick={() => handleLike()} className='absolute flex-center size-6 right-2 z-10'>
+      <article
+        onClick={() => onCardClick(product)}
+        className='group relative flex sm:flex-col w-full items-center gap-2 cursor-pointer'
+      >
+        <button
+          onClick={() => handleLike()}
+          className='absolute bottom-2 right-2 sm:top-2 flex-center size-6 z-10'
+        >
           <Heart
             size={24}
             fill={isLiked ? '#D92121' : 'white'}
@@ -37,22 +43,24 @@ export default function ProductCard({ onCardClick, product }: ProductCardProps) 
           />
         </button>
 
-        <div onClick={() => onCardClick(product)} className='flex flex-col cursor-pointer group'>
-          <div className='aspect-1 w-full overflow-hidden rounded-md bg-white group-hover:opacity-75'>
-            <img
-              src={product.image}
-              alt={product.name}
-              className='h-full w-full object-cover object-center'
-            />
-          </div>
-          <h3 className='mt-4 text-lg font-semibold'>{product.name}</h3>
-          <p className='mt-2 grow text-sm'>{product.description}</p>
-          <div className='mt-4 flex justify-between items-center'>
-            <span className='text-lg font-semibold shrink-0'>
-              {product.price || 'от 400'} &#8381;
-            </span>
-            <button className='text-sm shrink-0 button'>Добавить</button>
-          </div>
+        <div className='shrink-0 size-32 sm:size-auto sm:w-full aspect-1 overflow-hidden rounded-md bg-white group-hover:opacity-75'>
+          <img
+            src={product.image}
+            alt={product.name}
+            className='h-full w-full object-cover object-center'
+          />
+        </div>
+
+        <div className='flex flex-col gap-2 sm:gap-4 w-full grow'>
+          <h3 className='text-xs md:text-base text-stone-600 font-title uppercase tracking-wide'>
+            {product.name}
+          </h3>
+
+          <p className='text-xs md:text-sm sm:grow'>{product.description}</p>
+
+          <button className='text-sm md:text-base font-title shrink-0 button max-w-32'>
+            {product.price || 'от 400'} P
+          </button>
         </div>
       </article>
     </>

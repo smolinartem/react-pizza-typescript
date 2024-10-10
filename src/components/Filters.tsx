@@ -11,7 +11,7 @@ export default function Filters({ items, categoryName, onSelect, selected }: Fil
   return (
     <ul className='flex-center gap-2 mb-6 overflow-x-scroll scroll-pl-10 sm:overflow-x-hidden sm:scroll-pl-0'>
       <li className='shrink-0'>
-        <label className='form-label text-center text-sm p-2 md:text-base md:p-3'>
+        <label className='form-label text-center font-title uppercase text-stone-600 text-xs p-2 md:text-sm md:p-3'>
           <input
             className='appearance-none hidden m-0'
             type='radio'
@@ -25,7 +25,7 @@ export default function Filters({ items, categoryName, onSelect, selected }: Fil
       </li>
       {items.map((item) => (
         <li key={item.id} className='shrink-0'>
-          <label className='form-label text-center text-sm p-2 md:text-base md:p-3'>
+          <label className='form-label text-center font-title uppercase text-stone-600 text-xs p-2 md:text-sm md:p-3'>
             <input
               className='appearance-none hidden m-0'
               type='radio'

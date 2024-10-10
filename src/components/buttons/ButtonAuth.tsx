@@ -1,6 +1,6 @@
 import { LogIn } from 'lucide-react'
 import { useState } from 'react'
-import PopupAuth from './popup/PopupAuth'
+import PopupAuth from '../popup/PopupAuth'
 
 export default function ButtonAuth() {
   const [open, setOpen] = useState(false)

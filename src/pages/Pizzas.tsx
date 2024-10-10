@@ -37,7 +37,7 @@ export default function Pizzas() {
 
         <ul className='product-grid'>
           {shownProducts.map((pizza) => (
-            <ProductCard onCardClick={handlePopupOpen} product={pizza} key={pizza._id} /> // Карточка пиццы
+            <ProductCard onCardClick={handlePopupOpen} product={pizza} key={pizza._id} />
           ))}
         </ul>
       </div>
@@ -46,7 +46,7 @@ export default function Pizzas() {
           selectedPizza={selectedPizza}
           isOpen={popupOpen}
           onClose={handlePopupClose}
-        /> // Попап с формой выбора ингредиентов
+        />
       )}
     </>
   )

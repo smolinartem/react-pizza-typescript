@@ -6,10 +6,8 @@ type PizzaInfoProps = {
 
 export default function PizzasInfo({ pizza }: PizzaInfoProps) {
   return (
-    <div className='flex flex-col'>
-      <h3 className='mb-4 text-2xl md:text-xl text-center md:text-left font-boldleading-none'>
-        {pizza.name}
-      </h3>
+    <div className='flex flex-col gap-2'>
+      <h3 className='text-lg text-center font-title uppercase text-stone-600'>{pizza.name}</h3>
       <div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200'>
         <img
           src={pizza.image}
@@ -17,7 +15,7 @@ export default function PizzasInfo({ pizza }: PizzaInfoProps) {
           className='h-full w-full object-cover object-center'
         />
       </div>
-      <span className='my-4 text-center'>{pizza.description}</span>
+      <span className='text-center'>{pizza.description}</span>
     </div>
   )
 }
