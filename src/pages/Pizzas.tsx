@@ -5,9 +5,9 @@ import { pizzas, pizzasCategories } from '../utils/server'
 import { useProductCategory } from '../hooks/useProductCategory'
 import type { Product } from '../types/index.types'
 // - components
-import ProductCard from '../components/ProductCard'
 import PopupSelectionMenu from '../components/popup/PopupSelectionMenu'
 import Filters from '../components/Filters'
+import PizzaCard from '../components/PizzaCard'
 
 export default function Pizzas() {
   const { shownProducts, changeCategory, selected } = useProductCategory(pizzas)
@@ -37,7 +37,7 @@ export default function Pizzas() {
 
         <ul className='product-grid'>
           {shownProducts.map((pizza) => (
-            <ProductCard onCardClick={handlePopupOpen} product={pizza} key={pizza._id} />
+            <PizzaCard onCardClick={handlePopupOpen} product={pizza} key={pizza._id} />
           ))}
         </ul>
       </div>
