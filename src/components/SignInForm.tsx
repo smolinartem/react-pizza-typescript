@@ -31,7 +31,6 @@ export default function SignInForm() {
       onSubmit={handleSubmit(onFormSubmit)}
       className='sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'
     >
-      <h2 className='text-center text-2xl mb-8'>Вход</h2>
       <FormFieldAuth
         type='text'
         placeholder='ivan@ivanov.ru'
@@ -48,7 +47,7 @@ export default function SignInForm() {
         register={register}
         error={errors.password}
       />
-      <button className='button py-4 w-full mt-8' type='submit'>
+      <button className='button font-title uppercase text-sm py-4 w-full mt-8' type='submit'>
         Вход
       </button>
     </form>

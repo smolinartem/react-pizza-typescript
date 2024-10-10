@@ -8,6 +8,7 @@ import Contacts from './pages/Contacts'
 import ErrorPage from './pages/ErrorPage'
 import Cart from './pages/Cart'
 import Profile from './pages/Profile'
+import AuthPage from './pages/AuthPage'
 import ProtectedRoute from './hoc/ProtectedRoute'
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart />,
+      },
+      {
+        path: 'auth',
+        element: <AuthPage />,
       },
       {
         path: 'profile',

@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom'
-import { ShoppingBasket, Truck } from 'lucide-react'
+import { Truck } from 'lucide-react'
+import ButtonCart from '../buttons/ButtonCart'
 
 export default function MobileTopLinks() {
   return (
@@ -10,14 +10,7 @@ export default function MobileTopLinks() {
           <span className='block text-xs'>Доставка</span>
         </button>
 
-        <NavLink className='flex flex-col gap-1 items-center size-14' to='cart'>
-          {({ isActive }) => (
-            <>
-              <ShoppingBasket color={isActive ? '#D92121' : '#525252'} />
-              <span className='block text-xs'>Корзина</span>
-            </>
-          )}
-        </NavLink>
+        <ButtonCart />
       </div>
     </nav>
   )

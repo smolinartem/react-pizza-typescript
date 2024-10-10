@@ -1,9 +1,8 @@
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/pizza.png'
 
-/* import ButtonAccount from '../buttons/ButtonAccount' */
+import ButtonAccount from '../buttons/ButtonAccount'
 import ButtonCart from '../buttons/ButtonCart'
-import ButtonAuth from '../buttons/ButtonAuth'
 
 const links = [
   {
@@ -44,7 +43,7 @@ export default function LaptopLinks() {
         </div>
 
         <div className='flex items-center gap-2'>
-          <ButtonAuth />
+          <ButtonAccount />
           <ButtonCart />
         </div>
       </div>

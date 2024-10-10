@@ -9,7 +9,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
 
   useEffect(() => {
     if (userInfo === null) {
-      navigate('/')
+      navigate('/auth')
     }
   }, [userInfo, navigate])
 

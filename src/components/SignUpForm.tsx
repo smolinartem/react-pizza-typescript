@@ -1,5 +1,6 @@
 import FormFieldAuth from './FormFieldAuth'
 
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { createUser } from '../store/user/userSlice'
 
@@ -21,7 +22,8 @@ const RegisterFormSchema = z
 
 export type RegisterForm = z.infer<typeof RegisterFormSchema>
 
-export default function SignUpForm({ onClose }: { onClose: () => void }) {
+export default function SignUpForm() {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const {
     register,
@@ -41,7 +43,7 @@ export default function SignUpForm({ onClose }: { onClose: () => void }) {
     }
     dispatch(createUser(newUser))
     reset()
-    onClose()
+    navigate('/profile')
   }
 
   return (
@@ -49,8 +51,6 @@ export default function SignUpForm({ onClose }: { onClose: () => void }) {
       onSubmit={handleSubmit(onFormSubmit)}
       className='sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'
     >
-      <h2 className='text-center text-2xl mb-8'>Регистрация</h2>
-
       <FormFieldAuth
         type='text'
         placeholder='Иван Иванов'
@@ -85,7 +85,7 @@ export default function SignUpForm({ onClose }: { onClose: () => void }) {
         error={errors.confirmPassword}
       />
 
-      <button className='button py-4 w-full mt-8' type='submit'>
+      <button className='button font-title uppercase text-sm py-4 w-full mt-8' type='submit'>
         Регистрация
       </button>
     </form>
