@@ -1,31 +1,23 @@
 import isEqual from 'lodash.isequal'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeSize, changeThickness, updateToppings } from '../store/option/optionSlice'
 import { addOrder, increaseAmount } from '../store/order/orderSlice'
 import type { RootState } from '../store/store'
 import type { Product } from '../types/index.types'
 
-import { PRICE, WEIGHT } from '../utils/server'
+import { PRICE } from '../utils/server'
 
-import { calculatePizza } from '../utils/helpers'
+import { usePizzaForm } from '../hooks/usePizzaForm'
 
 type PizzaFormProps = {
   pizza: Product
   onClose: () => void
+  isOpen: boolean
 }
 
-const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
+const PizzaForm = ({ pizza, onClose, isOpen }: PizzaFormProps) => {
   const dispatch = useDispatch()
-  const option = useSelector((state: RootState) => state.option)
   const order = useSelector((state: RootState) => state.order)
-
-  /*   const [length, setLength] = useState('20')
-  useEffect(() => {
-    setLength('20')
-  }, []) */
-
-  const weight = calculatePizza(option, WEIGHT)
-  const price = calculatePizza(option, PRICE)
+  const { selected, price, weight, actions } = usePizzaForm(isOpen)
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -34,9 +26,9 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
       name: pizza.name,
       image: pizza.image,
       description: pizza.description,
-      size: option.size,
-      thickness: option.thickness,
-      toppings: option.toppings,
+      size: selected.size,
+      thickness: selected.thickness,
+      toppings: selected.toppings,
       price: price,
       amount: 1,
     }
@@ -66,34 +58,34 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
       <div className='flex gap-2 sm:gap-3'>
         <label className='form-label text-center'>
           <input
-            onChange={(e) => dispatch(changeSize(e.target.value))}
+            onChange={(e) => actions.chooseSize(e)}
             className='appearance-none hidden m-0'
             name='size'
             type='radio'
             value='small'
-            checked={option.size === 'small'}
+            checked={selected.size === 'small'}
           />
           20
         </label>
         <label className='form-label text-center'>
           <input
-            onChange={(e) => dispatch(changeSize(e.target.value))}
+            onChange={(e) => actions.chooseSize(e)}
             className='appearance-none hidden m-0'
             name='size'
             type='radio'
             value='medium'
-            checked={option.size === 'medium'}
+            checked={selected.size === 'medium'}
           />
           25
         </label>
         <label className='form-label text-center'>
           <input
-            onChange={(e) => dispatch(changeSize(e.target.value))}
+            onChange={(e) => actions.chooseSize(e)}
             className='appearance-none hidden m-0'
             name='size'
             type='radio'
             value='large'
-            checked={option.size === 'large'}
+            checked={selected.size === 'large'}
           />
           30
         </label>
@@ -102,23 +94,23 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
       <div className='flex gap-2 sm:gap-3'>
         <label className='form-label text-center'>
           <input
-            onChange={(e) => dispatch(changeThickness(e.target.value))}
+            onChange={(e) => actions.chooseThickness(e)}
             className='appearance-none hidden m-0'
             name='thickness'
             type='radio'
             value='thin'
-            checked={option.thickness === 'thin'}
+            checked={selected.thickness === 'thin'}
           />
           Тонкое
         </label>
         <label className='form-label text-center'>
           <input
-            onChange={(e) => dispatch(changeThickness(e.target.value))}
+            onChange={(e) => actions.chooseThickness(e)}
             className='appearance-none hidden m-0'
             name='thickness'
             type='radio'
             value='lush'
-            checked={option.thickness === 'lush'}
+            checked={selected.thickness === 'lush'}
           />
           Пышное
         </label>
@@ -127,53 +119,45 @@ const PizzaForm = ({ pizza, onClose }: PizzaFormProps) => {
       <div className='flex flex-col gap-2 sm:gap-3 grow'>
         <label className='form-label'>
           <input
-            onChange={(e) =>
-              dispatch(updateToppings({ value: e.target.value, checked: e.target.checked }))
-            }
+            onChange={(e) => actions.chooseToppings(e)}
             className='appearance-none hidden m-0'
             name='toppings'
             type='checkbox'
             value='cheese'
-            checked={option.toppings.includes('cheese')}
+            checked={selected.toppings.includes('cheese')}
           />
           Сыр Моцарелла: {PRICE.toppings.cheese} &#8381;
         </label>
         <label className='form-label'>
           <input
-            onChange={(e) =>
-              dispatch(updateToppings({ value: e.target.value, checked: e.target.checked }))
-            }
+            onChange={(e) => actions.chooseToppings(e)}
             className='appearance-none hidden m-0'
             name='toppings'
             type='checkbox'
             value='jalapeno'
-            checked={option.toppings.includes('jalapeno')}
+            checked={selected.toppings.includes('jalapeno')}
           />
           Халапеньо: {PRICE.toppings.jalapeno} &#8381;
         </label>
         <label className='form-label'>
           <input
-            onChange={(e) =>
-              dispatch(updateToppings({ value: e.target.value, checked: e.target.checked }))
-            }
+            onChange={(e) => actions.chooseToppings(e)}
             className='appearance-none hidden m-0'
             name='toppings'
             type='checkbox'
             value='mushrooms'
-            checked={option.toppings.includes('mushrooms')}
+            checked={selected.toppings.includes('mushrooms')}
           />
           Шампиньоны: {PRICE.toppings.mushrooms} &#8381;
         </label>
         <label className='form-label'>
           <input
-            onChange={(e) =>
-              dispatch(updateToppings({ value: e.target.value, checked: e.target.checked }))
-            }
+            onChange={(e) => actions.chooseToppings(e)}
             className='appearance-none hidden m-0'
             name='toppings'
             type='checkbox'
             value='ham'
-            checked={option.toppings.includes('ham')}
+            checked={selected.toppings.includes('ham')}
           />
           Ветчина: {PRICE.toppings.ham} &#8381;
         </label>

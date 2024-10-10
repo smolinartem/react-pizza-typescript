@@ -3,31 +3,52 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/store'
 import { deleteFavoriteProduct } from '../store/user/userSlice'
-import { resetOptions } from '../store/option/optionSlice'
 
 import { Product } from '../types/index.types'
 import { Trash } from 'lucide-react'
-import PopupSelectionMenu from './popup/PopupSelectionMenu'
+
+import PopupDrinkMenu from './popup/PopupDrinkMenu'
+import PopupPizzaMenu from './popup/PopupPizzaMenu'
 
 export default function UserFavProducts() {
   const { userInfo, userProducts } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
 
-  const [selectionMenuOpen, setSelectionMenuOpen] = useState(false)
+  const [pizzaMenuOpen, setPizzaMenuOpen] = useState(false)
   const [selectedPizza, setSelectedPizza] = useState<Product | null>(null)
 
-  const handlePopupOpen = (pizza: Product) => {
-    dispatch(resetOptions())
-    setSelectedPizza(pizza)
-    setSelectionMenuOpen(true)
-  }
-  const handlePopupClose = () => {
-    setSelectionMenuOpen(false)
+  const [drinkMenuOpen, setDrinkMenuOpen] = useState(false)
+  const [selectedDrink, setSelectedDrink] = useState<Product | null>(null)
+
+  const handlePopupOpen = (product: Product) => {
+    if (product._id > 20) {
+      setSelectedDrink(product)
+      setDrinkMenuOpen(true)
+    } else {
+      setSelectedPizza(product)
+      setPizzaMenuOpen(true)
+    }
   }
 
   return (
     userInfo && (
       <div className='w-full md:rounded-xl md:shadow-one md:px-4 md:py-6'>
+        {selectedPizza && (
+          <PopupPizzaMenu
+            selectedPizza={selectedPizza}
+            isOpen={pizzaMenuOpen}
+            onClose={() => setPizzaMenuOpen(false)}
+          />
+        )}
+
+        {selectedDrink && (
+          <PopupDrinkMenu
+            drink={selectedDrink}
+            open={drinkMenuOpen}
+            onClose={() => setDrinkMenuOpen(false)}
+          />
+        )}
+
         <h2 className='text-xl mb-6 text-center'>Избранные продукты</h2>
 
         <ul className='flex flex-col gap-4'>
@@ -63,14 +84,6 @@ export default function UserFavProducts() {
             </li>
           ))}
         </ul>
-
-        {selectedPizza && (
-          <PopupSelectionMenu
-            selectedPizza={selectedPizza}
-            isOpen={selectionMenuOpen}
-            onClose={handlePopupClose}
-          />
-        )}
       </div>
     )
   )

@@ -34,3 +34,8 @@ export type User = {
 }
 
 export type UserState = User | null
+
+export type Size = 'small' | 'medium' | 'large'
+export type Thickness = 'thin' | 'lush'
+export type Topping = 'cheese' | 'jalapeno' | 'mushrooms' | 'ham'
+export type Toppings = Topping[]

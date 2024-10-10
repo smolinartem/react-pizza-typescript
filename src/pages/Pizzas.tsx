@@ -1,23 +1,19 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { resetOptions } from '../store/option/optionSlice'
 import { pizzas, pizzasCategories } from '../utils/server'
 import { useProductCategory } from '../hooks/useProductCategory'
 import type { Product } from '../types/index.types'
 // - components
-import PopupSelectionMenu from '../components/popup/PopupSelectionMenu'
 import Filters from '../components/Filters'
 import PizzaCard from '../components/PizzaCard'
+import PopupPizzaMenu from '../components/popup/PopupPizzaMenu'
 
 export default function Pizzas() {
   const { shownProducts, changeCategory, selected } = useProductCategory(pizzas)
 
-  const dispatch = useDispatch()
   const [selectedPizza, setSelectedPizza] = useState<Product | null>(null)
   const [popupOpen, setPopupOpen] = useState(false)
 
   const handlePopupOpen = (pizza: Product) => {
-    dispatch(resetOptions())
     setSelectedPizza(pizza)
     setPopupOpen(true)
   }
@@ -42,7 +38,7 @@ export default function Pizzas() {
         </ul>
       </div>
       {selectedPizza && (
-        <PopupSelectionMenu
+        <PopupPizzaMenu
           selectedPizza={selectedPizza}
           isOpen={popupOpen}
           onClose={handlePopupClose}
