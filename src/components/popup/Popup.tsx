@@ -18,7 +18,7 @@ export default function Popup({ isOpen, onClose, children }: PopupProps) {
     >
       <div className='popup-container'>
         {isSmallDevice ? (
-          <button className='button-order absolute top-6 left-6'>
+          <button onClick={onClose} className='button-order absolute top-6 left-6'>
             <ArrowLeft color='#292524' strokeWidth={1.5} />
           </button>
         ) : (

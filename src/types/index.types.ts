@@ -39,3 +39,14 @@ export type Size = 'small' | 'medium' | 'large'
 export type Thickness = 'thin' | 'lush'
 export type Topping = 'cheese' | 'jalapeno' | 'mushrooms' | 'ham'
 export type Toppings = Topping[]
+
+export type Address = {
+  selected: boolean
+  streetName: string
+  houseNumber: string
+  flatNumber: string
+  blockNumber?: string
+  doorCode?: string
+  floorNumber?: string
+  entranceNumber?: string
+}

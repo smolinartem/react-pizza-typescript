@@ -2,9 +2,26 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { ProfileEditForm } from '../../components/popup/PopupProfileEdit'
 import type { Product, User, UserState } from '../../types/index.types'
 
+/* export type Address = {
+  selected: boolean
+  streetName: string
+  houseNumber: string
+  flatNumber: string
+  blockNumber?: string
+  doorCode?: string
+  floorNumber?: string
+  entranceNumber?: string
+} */
+
+type Address = {
+  selected: boolean
+  streetName: string
+}
+
 const initialState = {
   userInfo: null as UserState,
   userProducts: [] as Product[],
+  userAddresses: [] as Address[],
 }
 
 const userSlice = createSlice({
@@ -47,9 +64,27 @@ const userSlice = createSlice({
         (product) => product._id !== action.payload._id
       )
     },
+    addNewAddress: (state, action: PayloadAction<string>) => {
+      state.userAddresses.forEach((address) => {
+        address.selected = false
+      })
+      state.userAddresses.push({ selected: true, streetName: action.payload })
+    },
+    selectAddress: (state, action: PayloadAction<string>) => {
+      state.userAddresses.forEach((address) => {
+        address.selected = address.streetName === action.payload
+      })
+    },
   },
 })
 
-export const { createUser, deleteUser, addFavoriteProduct, editProfile, deleteFavoriteProduct } =
-  userSlice.actions
+export const {
+  createUser,
+  deleteUser,
+  addFavoriteProduct,
+  editProfile,
+  deleteFavoriteProduct,
+  addNewAddress,
+  selectAddress,
+} = userSlice.actions
 export default userSlice.reducer
