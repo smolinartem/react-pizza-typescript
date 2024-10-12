@@ -37,7 +37,7 @@ export default function ButtonDelivery() {
   return (
     <>
       <div onClick={() => handleClick()} className='flex items-center gap-2'>
-        <button className='flex-center size-12'>
+        <button className='flex-center size-12' type='button' aria-label='Кнопка доставки.'>
           <Truck color='#525252' />
         </button>
 

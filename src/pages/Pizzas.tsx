@@ -31,11 +31,11 @@ export default function Pizzas() {
           selected={selected}
         />
 
-        <ul className='product-grid'>
+        <div className='product-grid'>
           {shownProducts.map((pizza) => (
             <PizzaCard onCardClick={handlePopupOpen} product={pizza} key={pizza._id} />
           ))}
-        </ul>
+        </div>
       </div>
       {selectedPizza && (
         <PopupPizzaMenu

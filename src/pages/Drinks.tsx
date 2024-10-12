@@ -42,11 +42,11 @@ export default function Drinks() {
         onSelect={changeCategory}
         selected={selected}
       />
-      <ul className='product-grid'>
+      <div className='product-grid'>
         {shownProducts.map((drink) => (
           <DrinkCard onCardClick={handleAddDrink} product={drink} key={drink._id} />
         ))}
-      </ul>
+      </div>
     </div>
   )
 }

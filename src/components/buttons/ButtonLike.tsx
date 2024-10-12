@@ -36,6 +36,7 @@ export default function ButtonLike({ product }: Props) {
     <button
       onClick={() => handleLike()}
       className='absolute bottom-2 right-2 sm:top-2 flex-center size-6 z-10'
+      aria-label='Кнопка лайка.'
     >
       <Heart
         size={24}
