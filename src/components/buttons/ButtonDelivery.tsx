@@ -35,14 +35,16 @@ export default function ButtonDelivery() {
   const selectedAddress = userAddresses.find((address) => address.selected === true)
 
   return (
-    <div className='flex items-center gap-2'>
-      <button onClick={() => handleClick()} className='flex-center size-12'>
-        <Truck color='#525252' />
-      </button>
+    <>
+      <div onClick={() => handleClick()} className='flex items-center gap-2'>
+        <button className='flex-center size-12'>
+          <Truck color='#525252' />
+        </button>
 
-      {selectedAddress && <span className='block text-sm'>{selectedAddress.streetName}</span>}
+        {selectedAddress && <span className='block text-sm'>{selectedAddress.value}</span>}
+      </div>
 
       {<PopupAddress isOpen={popupAddressOpen} onClose={() => setPopupAddressOpen(false)} />}
-    </div>
+    </>
   )
 }

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../store/store'
 import { selectAddress } from '../../store/user/userSlice'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface Props {
   onClose: () => void
@@ -12,6 +12,11 @@ export default function AddressFormSelect({ onClose }: Props) {
   const dispatch = useDispatch()
 
   const [selected, setSelected] = useState('default')
+
+  useEffect(() => {
+    const index = userAddresses.findIndex((a) => a.selected === true)
+    if (index !== -1) setSelected(userAddresses[index].value)
+  }, [userAddresses])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -27,18 +32,18 @@ export default function AddressFormSelect({ onClose }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
-      {userAddresses.map(({ streetName }) => (
-        <label className='form-label text-center'>
+      {userAddresses.map(({ value }) => (
+        <label key={value} className='form-label text-center'>
           <input
             onChange={(e) => setSelected(e.target.value)}
-            checked={selected === streetName}
+            checked={selected === value}
             className='appearance-none hidden m-0'
             name='address'
             type='radio'
-            value={streetName}
-            key={streetName}
+            value={value}
+            key={value}
           />
-          {streetName}
+          {value}
         </label>
       ))}
 

@@ -15,7 +15,7 @@ import type { Product, User, UserState } from '../../types/index.types'
 
 type Address = {
   selected: boolean
-  streetName: string
+  value: string
 }
 
 const initialState = {
@@ -68,11 +68,11 @@ const userSlice = createSlice({
       state.userAddresses.forEach((address) => {
         address.selected = false
       })
-      state.userAddresses.push({ selected: true, streetName: action.payload })
+      state.userAddresses.push({ selected: true, value: action.payload })
     },
     selectAddress: (state, action: PayloadAction<string>) => {
       state.userAddresses.forEach((address) => {
-        address.selected = address.streetName === action.payload
+        address.selected = address.value === action.payload
       })
     },
   },

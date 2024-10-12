@@ -43,7 +43,7 @@ export default function SignUpForm() {
     }
     dispatch(createUser(newUser))
     reset()
-    navigate('/profile')
+    navigate('/profile', { replace: true })
   }
 
   return (

@@ -9,7 +9,7 @@ type FiltersProps = {
 
 export default function Filters({ items, categoryName, onSelect, selected }: FiltersProps) {
   return (
-    <ul className='flex-center gap-2 mb-6 overflow-x-scroll sm:overflow-x-visible'>
+    <ul className='flex-center gap-2 mb-6 px-8 overflow-x-scroll sm:overflow-x-visible'>
       <li className='shrink-0'>
         <label className='form-label text-center font-title uppercase text-stone-600 text-xs p-2 md:text-sm md:p-3'>
           <input
