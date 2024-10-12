@@ -4,12 +4,14 @@ import { RootState } from '../store/store'
 import { deleteUser } from '../store/user/userSlice'
 import { Cake, LogOut, Mail, Phone, Settings, UserRound } from 'lucide-react'
 import PopupProfileEdit from './popup/PopupProfileEdit'
+import PopupPasswordEdit from './popup/PopupPasswordEdit'
 
 export default function UserInfo() {
   const { userInfo } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
 
-  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [popupSettingsOpen, setPopupSettingsOpen] = useState(false)
+  const [popupPasswordOpen, setPopupPasswordOpen] = useState(false)
 
   return (
     userInfo && (
@@ -64,22 +66,34 @@ export default function UserInfo() {
           </button>
 
           <button
-            onClick={() => setSettingsOpen(true)}
+            onClick={() => setPopupSettingsOpen(true)}
             className='flex gap-1 pr-4 py-2 shrink-0 text-sm'
           >
             <Settings size={20} strokeWidth={1.5} />
             Редактировать
           </button>
 
-          <button className='flex gap-1 pr-4 py-2 shrink-0 text-sm'>
+          <button
+            onClick={() => setPopupPasswordOpen(true)}
+            className='flex gap-1 pr-4 py-2 shrink-0 text-sm'
+          >
             <Settings size={20} strokeWidth={1.5} />
             Сменить пароль
           </button>
         </div>
 
-        {settingsOpen && (
-          <PopupProfileEdit isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
-        )}
+        {
+          <PopupProfileEdit
+            isOpen={popupSettingsOpen}
+            onClose={() => setPopupSettingsOpen(false)}
+          />
+        }
+        {
+          <PopupPasswordEdit
+            isOpen={popupPasswordOpen}
+            onClose={() => setPopupPasswordOpen(false)}
+          />
+        }
       </ul>
     )
   )

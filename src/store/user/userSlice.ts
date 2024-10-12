@@ -41,6 +41,11 @@ const userSlice = createSlice({
         state.userProducts.push(action.payload)
       }
     },
+    updatePassword: (state, action: PayloadAction<string>) => {
+      if (state.userInfo) {
+        state.userInfo.password = action.payload
+      }
+    },
     editProfile: (state, action: PayloadAction<ProfileEditForm>) => {
       const { userInfo } = state
       const { name, email, birthday, phone } = action.payload
@@ -86,5 +91,6 @@ export const {
   deleteFavoriteProduct,
   addNewAddress,
   selectAddress,
+  updatePassword,
 } = userSlice.actions
 export default userSlice.reducer

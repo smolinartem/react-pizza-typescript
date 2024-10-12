@@ -91,12 +91,12 @@ export default function PopupProfileEdit({ isOpen, onClose }: PopupProfileEditPr
           error={errors.birthday}
         />
 
-        <div className='mt-8 flex flex-col gap-4'>
-          <button className='button py-4 w-full' type='submit'>
-            Редактировать
+        <div className='flex items-center gap-2 mt-8'>
+          <button onClick={() => onClose()} className='button w-full' type='button'>
+            Отмена
           </button>
-          <button onClick={() => onClose()} className='button py-4 w-full' type='reset'>
-            Отменить
+          <button className='button w-full' type='submit'>
+            Редактировать
           </button>
         </div>
       </form>
