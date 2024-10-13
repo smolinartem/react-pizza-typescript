@@ -1,6 +1,6 @@
 import FormFieldAuth from './FormFieldAuth'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { createUser } from '../store/user/userSlice'
 
@@ -24,6 +24,7 @@ export type RegisterForm = z.infer<typeof RegisterFormSchema>
 
 export default function SignUpForm() {
   const navigate = useNavigate()
+  const location = useLocation()
   const dispatch = useDispatch()
   const {
     register,
@@ -43,7 +44,12 @@ export default function SignUpForm() {
     }
     dispatch(createUser(newUser))
     reset()
-    navigate('/profile', { replace: true })
+
+    if (location.state?.from === 'cart') {
+      navigate('/cart', { replace: true })
+    } else {
+      navigate('/profile', { replace: true })
+    }
   }
 
   return (

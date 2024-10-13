@@ -11,7 +11,7 @@ interface Props {
 type Action = 'select' | 'add'
 
 export default function PopupAddress({ isOpen, onClose }: Props) {
-  const [action, setAction] = useState<Action>('select')
+  const [action, setAction] = useState<Action>('add')
 
   return (
     <Popup isOpen={isOpen} onClose={onClose}>

@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { ProfileEditForm } from '../../components/popup/PopupProfileEdit'
 import type { Product, User, UserState } from '../../types/index.types'
+import { Order } from '../order/orderSlice'
+import { getCurrentTime } from '../../utils/helpers'
 
 /* export type Address = {
   selected: boolean
@@ -18,10 +20,21 @@ type Address = {
   value: string
 }
 
+export type OrderStatus = 'success' | 'failed' | 'in-progress'
+export type ConfirmedOrder = {
+  status: OrderStatus
+  products: Order[]
+  address: string
+  totalPrice: number
+  time: string
+}
+export type ConfirmedOrderPayload = Omit<ConfirmedOrder, 'status' | 'time'>
+
 const initialState = {
   userInfo: null as UserState,
   userProducts: [] as Product[],
   userAddresses: [] as Address[],
+  userOrders: [] as ConfirmedOrder[],
 }
 
 const userSlice = createSlice({
@@ -80,6 +93,19 @@ const userSlice = createSlice({
         address.selected = address.value === action.payload
       })
     },
+    createOrder: (state, action: PayloadAction<ConfirmedOrderPayload>) => {
+      const { products, address, totalPrice } = action.payload
+
+      const time = getCurrentTime()
+      const confirmedOrder = {
+        status: 'in-progress' as OrderStatus,
+        products,
+        address,
+        totalPrice,
+        time,
+      }
+      state.userOrders.push(confirmedOrder)
+    },
   },
 })
 
@@ -92,5 +118,6 @@ export const {
   addNewAddress,
   selectAddress,
   updatePassword,
+  createOrder,
 } = userSlice.actions
 export default userSlice.reducer

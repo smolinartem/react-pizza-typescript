@@ -16,14 +16,17 @@ export default function AddressFormAdd({ onClose }: Props) {
     onClose()
   }
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <label htmlFor='streetName' className='text-sm'>
-        Улица
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className='sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'
+    >
+      <label htmlFor='address' className='text-sm'>
+        Адрес
       </label>
       <input
         onChange={(e) => setAddress(e.target.value)}
         value={address}
-        id='streetName'
+        id='address'
         type='text'
         className='block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-grey-900 sm:text-sm sm:leading-6'
       />

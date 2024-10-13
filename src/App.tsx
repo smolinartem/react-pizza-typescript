@@ -9,6 +9,7 @@ import ErrorPage from './pages/ErrorPage'
 import Cart from './pages/Cart'
 import Profile from './pages/Profile'
 import AuthPage from './pages/AuthPage'
+import OrderPage from './pages/OrderPage'
 import ProtectedRoute from './hoc/ProtectedRoute'
 
 const router = createBrowserRouter([
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart />,
+      },
+      {
+        path: 'cart/order',
+        element: (
+          <ProtectedRoute>
+            <OrderPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'auth',

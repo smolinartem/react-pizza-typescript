@@ -28,10 +28,18 @@ export default function AddressFormSelect({ onClose }: Props) {
     onClose()
   }
 
-  if (userAddresses.length === 0) return <span>Пока нет адресов</span>
+  if (userAddresses.length === 0)
+    return (
+      <span className='block text-center sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'>
+        Пока нет адресов
+      </span>
+    )
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
+    <form
+      onSubmit={handleSubmit}
+      className='flex flex-col gap-2 sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'
+    >
       {userAddresses.map(({ value }) => (
         <label key={value} className='form-label text-center'>
           <input

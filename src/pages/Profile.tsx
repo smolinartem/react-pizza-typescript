@@ -1,21 +1,20 @@
-import { useSelector } from 'react-redux'
-import { RootState } from '../store/store'
-
-import UserInfo from '../components/UserInfo'
-import UserHeader from '../components/UserHeader'
-import UserFavProducts from '../components/UserFavProducts'
+import UserHeader from '../components/user/UserHeader'
+import UserHistory from '../components/user/UserHistory'
+import UserData from '../components/user/UserData'
+import UserAddressList from '../components/user/UserAddressList'
 
 export default function Profile() {
-  const { userProducts } = useSelector((state: RootState) => state.user)
-
   return (
     <div className='section-container'>
       <UserHeader />
 
-      <div className='gap-6 mt-6 md:grid md:grid-cols-2 md:gap-4'>
-        <UserInfo />
+      <div className='gap-6 mt-6 md:grid md:grid-cols-2'>
+        <div>
+          <UserData />
+          <UserAddressList />
+        </div>
 
-        {userProducts.length > 0 && <UserFavProducts />}
+        <UserHistory />
       </div>
     </div>
   )

@@ -1,20 +1,21 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../store/store'
-import { deleteUser } from '../store/user/userSlice'
+import { RootState } from '../../store/store'
+import { deleteUser } from '../../store/user/userSlice'
 import { Cake, LogOut, Mail, Phone, Settings, UserRound } from 'lucide-react'
-import PopupProfileEdit from './popup/PopupProfileEdit'
-import PopupPasswordEdit from './popup/PopupPasswordEdit'
+import PopupProfileEdit from '../popup/PopupProfileEdit'
+import PopupPasswordEdit from '../popup/PopupPasswordEdit'
 
-export default function UserInfo() {
+export default function UserData() {
   const { userInfo } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
 
   const [popupSettingsOpen, setPopupSettingsOpen] = useState(false)
   const [popupPasswordOpen, setPopupPasswordOpen] = useState(false)
 
+  if (userInfo === null) return null
   return (
-    userInfo && (
+    <div>
       <ul className='grid gap-2 h-max w-full mb-6 md:rounded-xl md:shadow-one md:px-4 md:py-6'>
         <li className='flex gap-2'>
           <div className='size-12 flex-center rounded-lg bg-accent shrink-0'>
@@ -56,18 +57,10 @@ export default function UserInfo() {
           </div>
         </li>
 
-        <div className='flex flex-col items-end gap-1'>
-          <button
-            className='flex gap-1 pr-4 py-2 shrink-0 text-sm'
-            onClick={() => dispatch(deleteUser())}
-          >
-            <LogOut size={20} strokeWidth={1.5} />
-            Выйти
-          </button>
-
+        <div className='mt-4 grid grid-cols-2 items-center gap-2'>
           <button
             onClick={() => setPopupSettingsOpen(true)}
-            className='flex gap-1 pr-4 py-2 shrink-0 text-sm'
+            className='flex items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold'
           >
             <Settings size={20} strokeWidth={1.5} />
             Редактировать
@@ -75,10 +68,18 @@ export default function UserInfo() {
 
           <button
             onClick={() => setPopupPasswordOpen(true)}
-            className='flex gap-1 pr-4 py-2 shrink-0 text-sm'
+            className='flex items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold'
           >
             <Settings size={20} strokeWidth={1.5} />
             Сменить пароль
+          </button>
+
+          <button
+            className='flex col-span-2 items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold'
+            onClick={() => dispatch(deleteUser())}
+          >
+            <LogOut size={20} strokeWidth={1.5} />
+            Выйти
           </button>
         </div>
 
@@ -95,6 +96,6 @@ export default function UserInfo() {
           />
         }
       </ul>
-    )
+    </div>
   )
 }
