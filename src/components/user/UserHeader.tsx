@@ -13,7 +13,7 @@ export default function UserHeader() {
       >
         <ArrowLeft color='#292524' strokeWidth={1.5} />
       </button>
-      <h2 className='text-2xl font-title uppercase'>Профиль</h2>
+      <h2 className='text-2xl text-stone-600 font-title uppercase'>Профиль</h2>
     </div>
   )
 }

@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../store/store'
-import { selectAddress } from '../../store/user/userSlice'
+import { selectAddress, deleteAddress } from '../../store/user/userSlice'
 import { useEffect, useState } from 'react'
+import { Trash2 } from 'lucide-react'
 
 interface Props {
   onClose: () => void
@@ -17,6 +18,10 @@ export default function AddressFormSelect({ onClose }: Props) {
     const index = userAddresses.findIndex((a) => a.selected === true)
     if (index !== -1) setSelected(userAddresses[index].value)
   }, [userAddresses])
+
+  const handleAddressDelete = (value: string) => {
+    dispatch(deleteAddress(value))
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -41,7 +46,10 @@ export default function AddressFormSelect({ onClose }: Props) {
       className='flex flex-col gap-2 sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'
     >
       {userAddresses.map(({ value }) => (
-        <label key={value} className='form-label text-center'>
+        <label
+          key={value}
+          className='relative form-label text-center font-title uppercase text-sm text-stone-600'
+        >
           <input
             onChange={(e) => setSelected(e.target.value)}
             checked={selected === value}
@@ -52,6 +60,12 @@ export default function AddressFormSelect({ onClose }: Props) {
             key={value}
           />
           {value}
+          <button
+            onClick={() => handleAddressDelete(value)}
+            className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-accent'
+          >
+            <Trash2 size={20} strokeWidth={2.5} />
+          </button>
         </label>
       ))}
 

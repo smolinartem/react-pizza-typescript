@@ -58,7 +58,7 @@ export default function OrderPage() {
           <span className='block font-title uppercase text-lg text-stone-600'>Состав заказа:</span>
           {order.length > 0 &&
             order.map((order, index) => (
-              <div key={index} className='w-full border-b-2'>
+              <div key={index} className='w-full border-b-2 mb-4'>
                 <div className='w-full flex justify-between items-center gap-2 mb-1'>
                   <span className='text-xs font-bold uppercase grow'>{order.name}</span>
                   <span className='text-sm w-16'>{order.amount} шт</span>

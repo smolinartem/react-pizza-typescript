@@ -93,6 +93,11 @@ const userSlice = createSlice({
         address.selected = address.value === action.payload
       })
     },
+    deleteAddress: (state, action: PayloadAction<string>) => {
+      state.userAddresses = state.userAddresses.filter(
+        (address) => address.value !== action.payload
+      )
+    },
     createOrder: (state, action: PayloadAction<ConfirmedOrderPayload>) => {
       const { products, address, totalPrice } = action.payload
 
@@ -117,6 +122,7 @@ export const {
   deleteFavoriteProduct,
   addNewAddress,
   selectAddress,
+  deleteAddress,
   updatePassword,
   createOrder,
 } = userSlice.actions

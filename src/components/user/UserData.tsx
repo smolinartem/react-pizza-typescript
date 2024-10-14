@@ -16,7 +16,7 @@ export default function UserData() {
   if (userInfo === null) return null
   return (
     <div>
-      <ul className='grid gap-2 h-max w-full mb-6 md:rounded-xl md:shadow-one md:px-4 md:py-6'>
+      <ul className='grid gap-2 h-max w-full mb-10 md:rounded-xl md:shadow-one md:px-4 md:py-6'>
         <li className='flex gap-2'>
           <div className='size-12 flex-center rounded-lg bg-accent shrink-0'>
             <UserRound size={40} strokeWidth={1.5} color='white' />
@@ -57,10 +57,10 @@ export default function UserData() {
           </div>
         </li>
 
-        <div className='mt-4 grid grid-cols-2 items-center gap-2'>
+        <div className='mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-rows-3 md:grid-cols-1 xl:grid-cols-3 xl:grid-rows-1 items-center gap-2'>
           <button
             onClick={() => setPopupSettingsOpen(true)}
-            className='flex items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold'
+            className='flex items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold hover:text-accent'
           >
             <Settings size={20} strokeWidth={1.5} />
             Редактировать
@@ -68,14 +68,14 @@ export default function UserData() {
 
           <button
             onClick={() => setPopupPasswordOpen(true)}
-            className='flex items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold'
+            className='flex items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold hover:text-accent'
           >
             <Settings size={20} strokeWidth={1.5} />
             Сменить пароль
           </button>
 
           <button
-            className='flex col-span-2 items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold'
+            className='flex col-span-2 sm:col-span-1 items-center justify-center gap-1 border-2 py-4 rounded-lg uppercase text-xs font-semibold hover:text-accent'
             onClick={() => dispatch(deleteUser())}
           >
             <LogOut size={20} strokeWidth={1.5} />

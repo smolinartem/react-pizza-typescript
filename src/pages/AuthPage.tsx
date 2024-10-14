@@ -7,7 +7,7 @@ export default function AuthPage() {
   const [action, setAction] = useState<action>('register')
   return (
     <div className='section-container'>
-      <div className='flex gap-4 items-center justify-center'>
+      <div className='flex gap-4 items-center justify-center mb-4'>
         <button
           className={`${
             action === 'register' ? 'text-red-600' : 'text-stone-600'

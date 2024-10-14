@@ -53,7 +53,7 @@ export default function PasswordFormEdit({ onClose }: Props) {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className='sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto md:mt-10'
+      className='sm:border-2 rounded-lg py-8 sm:px-6 w-full sm:w-96 mx-auto sm:mt-10'
     >
       <FormFieldAuth
         type='password'

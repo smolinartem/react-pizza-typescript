@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import UserFavorites from './UserFavorites'
+import UserOrdersList from './UserOrdersList'
 
 type Action = 'favorites' | 'orders'
 export default function UserHistory() {
   const [action, setAction] = useState<Action>('favorites')
   return (
-    <div className='w-full md:rounded-xl md:shadow-one md:p-6'>
+    <div className='w-full min-h-80 md:rounded-xl md:shadow-one md:p-6'>
       <div className='flex gap-5 items-center justify-center mb-10'>
         <button
           className={`${
@@ -26,7 +27,7 @@ export default function UserHistory() {
       </div>
 
       {action === 'favorites' && <UserFavorites />}
-      {action === 'orders' && <span>Orders</span>}
+      {action === 'orders' && <UserOrdersList />}
     </div>
   )
 }
