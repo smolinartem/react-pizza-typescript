@@ -21,20 +21,22 @@ export default function OrderInfo({ item }: OrderInfoProps) {
   const isPizza = isPizzaOrder(item)
 
   return (
-    <div className='flex flex-col gap-1'>
-      <h5 className='text-base text-center font-semibold md:text-xl'>{item.name}</h5>
+    <div className='flex flex-col gap-1 justify-center'>
+      <h5 className='text-xs md:text-base text-stone-600 font-title uppercase tracking-wide'>
+        {item.name}
+      </h5>
 
       {isPizza ? (
         <>
-          <span className='text-xs md:text-sm block text-center'>{`${RU_NAMES[item.size]}, ${
+          <span className='text-xs md:text-sm block'>{`${RU_NAMES[item.size]}, ${
             RU_NAMES[item.thickness]
           }`}</span>
-          <span className='text-xs md:text-sm block text-center'>
+          <span className='text-xs md:text-sm block'>
             {item.toppings.length !== 0 && `Добавить: ${translateToppings(item.toppings)}`}
           </span>
         </>
       ) : (
-        <span className='text-sm text-center'>{item.description}</span>
+        <span className='text-sm'>{item.description}</span>
       )}
     </div>
   )
