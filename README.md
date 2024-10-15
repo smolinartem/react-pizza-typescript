@@ -1,30 +1,69 @@
-# React + TypeScript + Vite
+# React Pizza 🍕
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Содержание
 
-Currently, two official plugins are available:
+- [О проекте](#о-проекте)
+- [Установка и запуск](#установка-и-запуск)
+- [Технологический стек](#технологический-стек)
+- [Возможности](#возможности)
+- [Ссылка на проект](#Ссылка-на-проект)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## О проекте
 
-## Expanding the ESLint configuration
+Этот проект представляет собой веб-приложение для заказа пиццы, разработанное с использованием React и развернутое на Vercel.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![screenshot](./src/assets/screen-hero.png)
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+![screenshot](./src/assets/screen-profile.png)
+
+## Установка и запуск
+
+1. **Клонирование репозитория**:
+
+```sh
+git clone https://github.com/smolinartem/react-pizza-typescript.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. **Установка зависимостей:**
+
+```sh
+cd react-pizza-typescript
+npm install
+```
+
+3. **Запуск приложения:**
+
+```sh
+npm run dev
+```
+
+## Технологический стек:
+
+- React
+- Typescript
+- React Router
+- React Hook Forms
+- Zod
+- Redux Toolkit
+- Tailwind CSS
+
+## Возможности:
+
+- Отображение карточек продуктов из json объекта
+- Фильтрация товаров на основе их категории
+- Форма для кастомизации пиццы
+- Добавление товаров в корзину
+- Отображение количества товаров на иконке корзины
+- Добавление одинаковых товаров увеличивает количество данного товара в корзине
+- Управление количеством товара в корзине
+- Регистрация пользователя
+- Редактирование профиля и смена пароля
+- Добавление и выбор адреса
+- Добавление товаров в избранное
+- Подтверждение заказа и отображение их в истории заказов
+
+## Ссылка на проект:
+
+- [Проект на Vercel](https://krutopognali-react-pizza.vercel.app/)
